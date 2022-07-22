@@ -46,7 +46,7 @@ With a friend (cc Abyss Watcher) we decided to search for vulnerabilities on the
 Environment Of course we did not our research directly on root me.">
 <meta itemprop="datePublished" content="2022-07-12T13:02:46&#43;02:00" />
 <meta itemprop="dateModified" content="2022-07-12T13:02:46&#43;02:00" />
-<meta itemprop="wordCount" content="946">
+<meta itemprop="wordCount" content="950">
 <meta itemprop="image" content="https://SpawnZii.github.io/"/>
 
 
@@ -311,7 +311,7 @@ You know what that means ???</p>
 <p>Are you remember <a href="https://thinkloveshare.com/hacking/rce_on_spip_and_root_me/">the Laluka&rsquo;s RCE ?</a>
 And if we try to reproduce the same thing on our injection. <strong><code>http://localhost/ecrire/?exec=article&amp;id_article=1&amp;_oups=TzoxOiJBIjoxOntzOjE6ImEiO3M6MzoiUG9DIjt9'&quot;&lt;?php system('id');?&gt;</code></strong>.</p>
 <p><img src="https://SpawnZii.github.io/posts/rmrce/rcepoc.png" alt="form"></p>
-<p>BOOM RCE !!!</p>
+<p>Here we go again &hellip;</p>
 <h2 id="small-explanations">Small explanations</h2>
 <p><img src="https://SpawnZii.github.io/posts/rmrce/mm.jpg" alt="form"></p>
 <p>SPIP uses skeletons, a kind of html template that is used to formalise the rendering of a page. The problem here is that once the skeleton is filled in, it is passed to a function that evaluates the page (evaluer_page.php). So as we inject into the skeleton, once passed into the function evaluate_page.php the php is interpreted.</p>
@@ -336,7 +336,7 @@ And if we try to reproduce the same thing on our injection. <strong><code>http:/
 <p><strong>2022/07/22</strong>: <a href="https://blog.spip.net/Mise-a-jour-critique-de-securite-sortie-de-SPIP-4-1-5-SPIP-4-0-8-et-SPIP-3-2-16.html">New security release</a>.</p>
 </li>
 </ul>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion--thanks">Conclusion &amp; Thanks</h2>
 <p>It was a great experience to share our research with <a href="https://github.com/Abyss-W4tcher">Abyss Watcher</a>. We are happy to have contributed to the security of SPIP and Root-Me. Many thanks to <a href="https://twitter.com/TheLaluka?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Laluka</a> and <a href="https://twitter.com/_worty">W0rty</a> for proofreading this article.</p>
 <p><img src="https://SpawnZii.github.io/posts/rmrce/sq.jpg" alt="form"></p>
 <h2 id="references">References</h2>
@@ -386,7 +386,7 @@ And if we try to reproduce the same thing on our injection. <strong><code>http:/
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        946 Words
+        950 Words
       </p>
 
       <p>
