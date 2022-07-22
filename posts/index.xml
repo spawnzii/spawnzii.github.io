@@ -26,7 +26,7 @@ I&rsquo;m currently a first year student at ESNA and I&rsquo;m passionate about 
 <p>Of course we did not our research directly on root me. So we set up a local spip environment.</p>
 <ul>
 <li>SPIP version 4.1.2 <a href="https://files.spip.net/spip/archives/spip-v4.1.2.zip">https://files.spip.net/spip/archives/spip-v4.1.2.zip</a></li>
-<li>Docker (credit <a href="https://twitter.com/TheLaluka?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Laluka</a>):</li>
+<li><a href="https://twitter.com/TheLaluka">Laluka&rsquo;s</a> <a href="https://thinkloveshare.com/hacking/rce_on_spip_and_root_me/">docker-compose file</a>:</li>
 </ul>
 <pre><code class="language-yaml=" data-lang="yaml=">version: '3.5'
 
@@ -128,13 +128,13 @@ csrf_rce();
 </code></pre><p>We just have to encode our payload in base64 and paste it on the hyperlink.</p>
 <p><img src="/posts/rmrce/pldcsrf.png" alt="form"></p>
 <p>Now that our payload is ready, all we have to do is wait for an administrator to click on the link to download the plugin.</p>
-<p><img src="/posts/rmrce/o.gif" alt="form"></p>
+<p><img src="/posts/rmrce/o.gif#center" alt="form"></p>
 <p><img src="/posts/rmrce/apresclique.png" alt="form"></p>
 <p>We can go to our plugin to see the result.</p>
 <p><img src="/posts/rmrce/poc.png" alt="form"></p>
 <h2 id="-bug-2---on-est-bon-rien-a-faire-sounds-like-rce"># Bug 2 - &ldquo;On est bon, rien a faire&rdquo; sounds like RCE</h2>
 <p>After a few xss found, we wanted to think bigger and we gave ourselves the objective to find a RCE.</p>
-<p>A few days later Abyss watcher had the idea to watch the fix of an old vulnerability (cc <a href="https://twitter.com/TheLaluka?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Laluka</a>).</p>
+<p>A few days later Abyss watcher had the idea to watch the fix of an old vulnerability (cc <a href="https://twitter.com/TheLaluka">Laluka</a>).</p>
 <p><img src="/posts/rmrce/patch.png" alt="form"></p>
 <h3 id="what-happens-in-the-patch-">What happens in the patch ?</h3>
 <p>Before the patch the <code>_oups</code> parameter was passed directly to the <code>$valeurs</code> array.
