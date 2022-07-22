@@ -49,38 +49,11 @@
     </item>
     
     <item>
-      <title>bugbounty</title>
-      <link>https://SpawnZii.github.io/tags/bugbounty/</link>
-      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
-      
-      <guid>https://SpawnZii.github.io/tags/bugbounty/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>ctf</title>
       <link>https://SpawnZii.github.io/tags/ctf/</link>
       <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
       
       <guid>https://SpawnZii.github.io/tags/ctf/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>filterbypass</title>
-      <link>https://SpawnZii.github.io/tags/filterbypass/</link>
-      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
-      
-      <guid>https://SpawnZii.github.io/tags/filterbypass/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>open redirect</title>
-      <link>https://SpawnZii.github.io/tags/open-redirect/</link>
-      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
-      
-      <guid>https://SpawnZii.github.io/tags/open-redirect/</guid>
       <description></description>
     </item>
     
@@ -99,6 +72,15 @@
       <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
       
       <guid>https://SpawnZii.github.io/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>writeup</title>
+      <link>https://SpawnZii.github.io/tags/writeup/</link>
+      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/writeup/</guid>
       <description></description>
     </item>
     

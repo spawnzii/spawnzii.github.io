@@ -18,9 +18,9 @@
       <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
       
       <guid>https://SpawnZii.github.io/posts/2022/07/how-we-have-pwned-root-me-in-2022/</guid>
-      <description>Introduction With a friend (cc Abyss Watcher) we decided to look for vulnerabilities on the SPIP CMS, Root-Me being based on spip we will be able to report vulnerabilities on the platform. In the first days we managed to find some bugs, XSS, CSRF and RCE.
-Environment Of course we did not our research directly on root me. So we set up a local spip environment.
- SPIP version 4.1.2 https://files.</description>
+      <description>Introduction Hello, I&amp;rsquo;m currently a first year student at ESNA and I&amp;rsquo;m passionate about web application security. This article describes the discovery of several critical vulnerabilities in the SPIP CMS and Root-Me.
+With a friend (cc Abyss Watcher) we decided to search for vulnerabilities on the SPIP/Root-Me. From the first days, we managed to find some bugs, XSS, CSRF and later we will discover a RCE.
+Environment Of course we did not our research directly on root me.</description>
     </item>
     
   </channel>
