@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>filterbypass on SpawnZii</title>
+    <link>https://SpawnZii.github.io/tags/filterbypass/</link>
+    <description>Recent content in filterbypass on SpawnZii</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 28 Apr 2022 13:52:15 +0200</lastBuildDate>
+    
+	<atom:link href="https://SpawnZii.github.io/tags/filterbypass/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Bug Bounty] Open Redirect</title>
+      <link>https://SpawnZii.github.io/posts/2022/04/bug-bounty-open-redirect/</link>
+      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
+      
+      <guid>https://SpawnZii.github.io/posts/2022/04/bug-bounty-open-redirect/</guid>
+      <description>Introduction Hello, in this article I will detail the exploitation of a small bug that I found on a private program.
+The program has several scopes. One of the domains hosts a joomla. The site is static only a notification form is available.
+Exploitation So I intercepted the form&amp;rsquo;s request.Let&amp;rsquo;s assume that the target domain is www.spawnzii.com.
+POST /en/news HTTP/2 Host: www.spawnzii.com Cookie: cookieconsent_status=allow; aac5b3673d9cdeeefrf321e0c24cefe=h1uv6gsg0ucbpfgq249148vt7p User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.</description>
+    </item>
+    
+  </channel>
+</rss>

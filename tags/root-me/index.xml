@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>root-me on SpawnZii</title>
+    <link>https://SpawnZii.github.io/tags/root-me/</link>
+    <description>Recent content in root-me on SpawnZii</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Tue, 12 Jul 2022 13:02:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://SpawnZii.github.io/tags/root-me/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How we have pwned Root-Me in 2022</title>
+      <link>https://SpawnZii.github.io/posts/2022/07/how-we-have-pwned-root-me-in-2022/</link>
+      <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
+      
+      <guid>https://SpawnZii.github.io/posts/2022/07/how-we-have-pwned-root-me-in-2022/</guid>
+      <description>Introduction With a friend (cc Abyss Watcher) we decided to look for vulnerabilities on the SPIP CMS, Root-Me being based on spip we will be able to report vulnerabilities on the platform. In the first days we managed to find some bugs, XSS, CSRF and RCE.
+Environment Of course we did not our research directly on root me. So we set up a local spip environment.
+ SPIP version 4.1.2 https://files.</description>
+    </item>
+    
+  </channel>
+</rss>

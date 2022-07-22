@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xss on SpawnZii</title>
+    <link>https://SpawnZii.github.io/tags/xss/</link>
+    <description>Recent content in xss on SpawnZii</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 28 Mar 2022 18:46:31 +0200</lastBuildDate>
+    
+	<atom:link href="https://SpawnZii.github.io/tags/xss/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Bug Bounty] XSS to Account Takeover</title>
+      <link>https://SpawnZii.github.io/posts/2022/03/bug-bounty-xss-to-account-takeover/</link>
+      <pubDate>Mon, 28 Mar 2022 18:46:31 +0200</pubDate>
+      
+      <guid>https://SpawnZii.github.io/posts/2022/03/bug-bounty-xss-to-account-takeover/</guid>
+      <description>Introduction Hello, in this article I will detail the exploitation of a bug that I found on a private program on Yes We Hack.
+I started to list the web application. A feature of the application allows the user to plublish an article. I tried several xss payloads but as the program is quite old all the inputes were correctly filtered
+It is possible to publish an article from a url, by passing the url of an article the web application will preload the title and content of the article.</description>
+    </item>
+    
+  </channel>
+</rss>

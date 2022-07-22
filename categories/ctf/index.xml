@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CTF on SpawnZii</title>
+    <link>https://SpawnZii.github.io/categories/ctf/</link>
+    <description>Recent content in CTF on SpawnZii</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 28 Apr 2022 13:52:15 +0200</lastBuildDate>
+    
+	<atom:link href="https://SpawnZii.github.io/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Midnightflag] BGK Writeup</title>
+      <link>https://SpawnZii.github.io/posts/2022/04/midnightflag-bgk-writeup/</link>
+      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
+      
+      <guid>https://SpawnZii.github.io/posts/2022/04/midnightflag-bgk-writeup/</guid>
+      <description>Introduction Writeup d&amp;rsquo;un challenge que j&amp;rsquo;ai proposé pour le Midnightflag ctf. L&amp;rsquo;objectif est d&amp;rsquo;obtenir le flag situé dans le fichier /root/flag.txt du serveur. Pour ce faire les joueurs devront exploiter une webapp flask.
+Step 1 : Exploitation d&amp;rsquo;un cookie flask On lance une énumération classique des dossiers sur le serveur web.
+gobuster dir -u http://172.17.0.2:8181/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt =============================================================== Gobuster v3.1.0 by OJ Reeves (@TheColonial) &amp;amp; Christian Mehlmauer (@firefart) =============================================================== [+] Url: http://172.</description>
+    </item>
+    
+  </channel>
+</rss>
