@@ -50,7 +50,7 @@ With a friend (cc Abyss Watcher) we decided to search for vulnerabilities on the
 Environment Of course we did not our research directly on root me.">
 <meta itemprop="datePublished" content="2022-07-12T13:02:46&#43;02:00" />
 <meta itemprop="dateModified" content="2022-07-12T13:02:46&#43;02:00" />
-<meta itemprop="wordCount" content="950">
+<meta itemprop="wordCount" content="981">
 <meta itemprop="image" content="https://SpawnZii.github.io/"/>
 
 
@@ -301,7 +301,7 @@ Now <code>_oups</code> expects a serialized object encoded in base64.</p>
 <p>To debug more simply we have added a <code>print_r</code> of the variable <code>$valeurs</code>.
 This allows us to see the result of our payload directly on the page.</p>
 <h3 id="its-time-for-a-bypass">It&rsquo;s time for a bypass</h3>
-<p>Now what happens if we put a simple sting like <strong>http://localhost/ecrire/?exec=article&amp;id_article=1&amp;_oups=notanobject</strong> on <code>_oups</code> parameter ?</p>
+<p>Now what happens if we put a simple string like <strong>http://localhost/ecrire/?exec=article&amp;id_article=1&amp;_oups=notanobject</strong> on <code>_oups</code> parameter ?</p>
 <p><img src="https://SpawnZii.github.io/posts/rmrce/nv.png" alt="form"></p>
 <p>Nothing, <code>_oups</code> is empty.</p>
 <p>But now try to inject serialized object, like : <code>TzoxOiJBIjoxOntzOjE6ImEiO3M6MzoiUG9DIjt9</code>.</p>
@@ -318,7 +318,15 @@ And if we try to reproduce the same thing on our injection. <strong><code>http:/
 <p>Here we go again &hellip;</p>
 <h2 id="small-explanations">Small explanations</h2>
 <p><img src="https://SpawnZii.github.io/posts/rmrce/mm.jpg" alt="form"></p>
-<p>SPIP uses skeletons, a kind of html template that is used to formalise the rendering of a page. The problem here is that once the skeleton is filled in, it is passed to a function that evaluates the page (evaluer_page.php). So as we inject into the skeleton, once passed into the function evaluate_page.php the php is interpreted.</p>
+<p>SPIP uses skeletons, a kind of html template that is used to formalise the rendering of a page. The problem here is that once the skeleton is filled in, it is passed to a function that evaluates the page (<a href="https://github.com/spip/SPIP/blob/master/ecrire/public/evaluer_page.php"><strong>evaluer_page.php</strong></a>).</p>
+<p><img src="https://SpawnZii.github.io/posts/rmrce/eval.png" alt="form"></p>
+<p>So as we inject into the skeleton (<strong><a href="https://github.com/spip/SPIP/blob/master/prive/formulaires/editer_liens.html">editer_lien.html</a></strong>), once passed into the function <strong>evaluate_page.php</strong> the php is interpreted.</p>
+<h2 id="patch">Patch</h2>
+<p>This is how oops is managed after the patch.
+It is now base64 encoded and converted to json.
+<img src="https://SpawnZii.github.io/posts/rmrce/p1.png" alt="form"></p>
+<p>The whole thing will be passed to the html entities function</p>
+<p><img src="https://SpawnZii.github.io/posts/rmrce/p2.png" alt="form"></p>
 <h2 id="timeline">Timeline</h2>
 <ul>
 <li>
@@ -390,7 +398,7 @@ And if we try to reproduce the same thing on our injection. <strong><code>http:/
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        950 Words
+        981 Words
       </p>
 
       <p>
