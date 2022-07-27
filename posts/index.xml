@@ -191,12 +191,12 @@ It is now base64 encoded and converted to json.
 </li>
 </ul>
 <h2 id="conclusion--thanks">Conclusion &amp; Thanks</h2>
-<p>It was a great experience to share our research with <a href="https://github.com/Abyss-W4tcher">Abyss Watcher</a>. We are happy to have contributed to the security of SPIP and Root-Me. Many thanks to <a href="https://twitter.com/TheLaluka?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Laluka</a> and <a href="https://twitter.com/_worty">W0rty</a> for proofreading this article.</p>
+<p>It was a great experience to share our research with <a href="https://github.com/Abyss-W4tcher">Abyss Watcher</a>. We are happy to have contributed to the security of SPIP and Root-Me. Many thanks to <a href="https://twitter.com/TheLaluka">Laluka</a> and <a href="https://twitter.com/_worty">W0rty</a> for proofreading this article.</p>
 <p><img src="/posts/rmrce/sq.jpg" alt="form"></p>
 <h2 id="references">References</h2>
 <ul>
 <li>
-<p><strong>Abyss Watcher Article</strong>: <a href="https://github.com/Abyss-W4tcher/ab4yss-wr4iteups/blob/9ff0a6236d989f2864610b7390bdf2d5d0d141eb/SPIP%204.1.2%20Vulnerabilities/SPIP_4.1.2_AUTH_RCE/SPIP_4.1.2_AUTH_RCE_Abyss_Watcher_12_07_22.md">https://github.com/Abyss-W4tcher/&hellip;</a></p>
+<p><strong>Abyss Watcher Article</strong>: <a href="https://github.com/Abyss-W4tcher/ab4yss-wr4iteups/blob/master/SPIP%204.1.2%20Vulnerabilities/SPIP_4.1.2_AUTH_RCE/SPIP_4.1.2_AUTH_RCE_Abyss_Watcher_12_07_22.md">https://github.com/Abyss-W4tcher/&hellip;</a></p>
 </li>
 <li>
 <p><strong>Laluka&rsquo;s RCE</strong> : <a href="https://thinkloveshare.com/hacking/rce_on_spip_and_root_me/">https://thinkloveshare.com/hacking/rce_on_spip_and_root_me/</a></p>
