@@ -15,12 +15,12 @@
             <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
             
             <guid>https://SpawnZii.github.io/posts/2022/07/how-we-have-pwned-root-me-in-2022/</guid>
-            <description>Introduction Hello, I&amp;rsquo;m currently a first year student at ESNA and I&amp;rsquo;m passionate about web application security. This article describes the discovery of several critical vulnerabilities in the SPIP CMS and Root-Me.
+            <description>Introduction Hello, I&amp;rsquo;m currently a student at ESNA and I&amp;rsquo;m passionate about web application security. This article describes the discovery of several critical vulnerabilities in the SPIP CMS and Root-Me.
 With a friend (cc Abyss Watcher) we decided to search for vulnerabilities on the SPIP/Root-Me. From the first days, we managed to find some bugs, XSS, CSRF and later we will discover a RCE.
 Environment Of course we did not our research directly on root me.</description>
             <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>Hello,
-I&rsquo;m currently a first year student at ESNA and I&rsquo;m passionate about web application security. This article describes the discovery of several critical vulnerabilities in the SPIP CMS and <a href="https://www.root-me.org/">Root-Me</a>.</p>
+I&rsquo;m currently a student at ESNA and I&rsquo;m passionate about web application security. This article describes the discovery of several critical vulnerabilities in the SPIP CMS and <a href="https://www.root-me.org/">Root-Me</a>.</p>
 <p>With a friend (cc <a href="https://github.com/Abyss-W4tcher">Abyss Watcher</a>) we decided to search for vulnerabilities on the SPIP/Root-Me. From the first days, we managed to find some bugs, XSS, CSRF and later we will discover a RCE.</p>
 <h2 id="environment">Environment</h2>
 <p>Of course we did not our research directly on root me. So we set up a local spip environment.</p>
