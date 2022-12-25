@@ -173,7 +173,7 @@ I will try to explain you how I solved the web challenge.</description>
 <p>And him, do we forget him ?</p>
 <p><img src="/posts/xxe/up.png" alt="form"></p>
 <p>You understood, we will be able to upload our <strong>dtd</strong> here and fetch it locally.</p>
-<p>## Exploitation of an BLIND XXE with DNS exfiltration.</p>
+<h2 id="exploitation-of-an-blind-xxe-with-dns-exfiltration">Exploitation of an BLIND XXE with DNS exfiltration.</h2>
 <ul>
 <li>On the search use the following payload :</li>
 </ul>
