@@ -3,18 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://SpawnZii.github.io/categories/bug/</loc>
-    <lastmod>2022-07-12T13:02:46+02:00</lastmod>
+    <loc>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-777-cyber-casino/</loc>
+    <lastmod>2022-12-25T02:09:19+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://SpawnZii.github.io/tags/bugs/</loc>
-    <lastmod>2022-07-12T13:02:46+02:00</lastmod>
+    <loc>https://SpawnZii.github.io/tags/ctf/</loc>
+    <lastmod>2022-12-25T02:09:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/tags/ctf-esna/</loc>
+    <lastmod>2022-12-25T02:09:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/tags/postmessage/</loc>
+    <lastmod>2022-12-25T02:09:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/posts/</loc>
+    <lastmod>2022-12-25T02:09:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/tags/</loc>
+    <lastmod>2022-12-25T02:09:19+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://SpawnZii.github.io/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://SpawnZii.github.io/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/tags/xss/</loc>
+    <lastmod>2022-12-25T02:09:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-papa-no%C3%ABl-g%C3%A8re-ses-documents-introduction/</loc>
+    <lastmod>2022-12-25T02:04:10+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://SpawnZii.github.io/categories/</loc>
-    <lastmod>2022-07-12T13:02:46+02:00</lastmod>
+    <lastmod>2022-12-25T02:04:10+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -28,12 +68,32 @@
   </url>
   
   <url>
-    <loc>https://SpawnZii.github.io/posts/2022/07/how-we-have-pwned-root-me-in-2022/</loc>
+    <loc>https://SpawnZii.github.io/categories/ctf/</loc>
+    <lastmod>2022-12-25T02:04:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/tags/dns-exfiltration/</loc>
+    <lastmod>2022-12-25T02:04:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/tags/xxe/</loc>
+    <lastmod>2022-12-25T02:04:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/categories/bug/</loc>
     <lastmod>2022-07-12T13:02:46+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://SpawnZii.github.io/posts/</loc>
+    <loc>https://SpawnZii.github.io/tags/bugs/</loc>
+    <lastmod>2022-07-12T13:02:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/posts/2022/07/how-we-have-pwned-root-me-in-2022/</loc>
     <lastmod>2022-07-12T13:02:46+02:00</lastmod>
   </url>
   
@@ -53,32 +113,7 @@
   </url>
   
   <url>
-    <loc>https://SpawnZii.github.io/tags/</loc>
-    <lastmod>2022-07-12T13:02:46+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://SpawnZii.github.io/fr/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://SpawnZii.github.io/tags/"
-                />
-  </url>
-  
-  <url>
     <loc>https://SpawnZii.github.io/posts/2022/04/midnightflag-bgk-writeup/</loc>
-    <lastmod>2022-04-28T13:52:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/categories/ctf/</loc>
-    <lastmod>2022-04-28T13:52:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/tags/ctf/</loc>
     <lastmod>2022-04-28T13:52:15+02:00</lastmod>
   </url>
   

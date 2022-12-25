@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CTF on SpawnZii</title>
-    <link>https://SpawnZii.github.io/categories/ctf/</link>
-    <description>Recent content in CTF on SpawnZii</description>
+    <title>XXE on SpawnZii</title>
+    <link>https://SpawnZii.github.io/tags/xxe/</link>
+    <description>Recent content in XXE on SpawnZii</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Sun, 25 Dec 2022 02:04:10 +0100</lastBuildDate>
     
-	<atom:link href="https://SpawnZii.github.io/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://SpawnZii.github.io/tags/xxe/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,17 +20,6 @@
       <guid>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-papa-no%C3%ABl-g%C3%A8re-ses-documents-introduction/</guid>
       <description>Introduction Every year ESNA organizes a CTF as an advent calendar, so there is a new challenge every day on a different theme, like pwn, forensic, programming, reverse and web. To motivate students to participate, the TOP 8 of the general ranking will be selected to participate in the CTF of EC2. The challenges are proposed by Worty &amp;amp; iHuggsy, but also by other trusted students ;).
 I will try to explain you how I solved the web challenge.</description>
-    </item>
-    
-    <item>
-      <title>[Midnightflag] BGK Writeup</title>
-      <link>https://SpawnZii.github.io/posts/2022/04/midnightflag-bgk-writeup/</link>
-      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
-      
-      <guid>https://SpawnZii.github.io/posts/2022/04/midnightflag-bgk-writeup/</guid>
-      <description>Introduction Writeup d&amp;rsquo;un challenge que j&amp;rsquo;ai proposé pour le Midnightflag ctf. L&amp;rsquo;objectif est d&amp;rsquo;obtenir le flag situé dans le fichier /root/flag.txt du serveur. Pour ce faire les joueurs devront exploiter une webapp flask.
-Step 1 : Exploitation d&amp;rsquo;un cookie flask On lance une énumération classique des dossiers sur le serveur web.
-gobuster dir -u http://172.17.0.2:8181/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt =============================================================== Gobuster v3.1.0 by OJ Reeves (@TheColonial) &amp;amp; Christian Mehlmauer (@firefart) =============================================================== [+] Url: http://172.</description>
     </item>
     
   </channel>

@@ -7,10 +7,64 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 12 Jul 2022 13:02:46 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 25 Dec 2022 02:09:19 +0100</lastBuildDate>
     
 	<atom:link href="https://SpawnZii.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ctf</title>
+      <link>https://SpawnZii.github.io/tags/ctf/</link>
+      <pubDate>Sun, 25 Dec 2022 02:09:19 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CTF-ESNA</title>
+      <link>https://SpawnZii.github.io/tags/ctf-esna/</link>
+      <pubDate>Sun, 25 Dec 2022 02:09:19 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/ctf-esna/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postmessage</title>
+      <link>https://SpawnZii.github.io/tags/postmessage/</link>
+      <pubDate>Sun, 25 Dec 2022 02:09:19 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/postmessage/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>XSS</title>
+      <link>https://SpawnZii.github.io/tags/xss/</link>
+      <pubDate>Sun, 25 Dec 2022 02:09:19 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/xss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DNS exfiltration</title>
+      <link>https://SpawnZii.github.io/tags/dns-exfiltration/</link>
+      <pubDate>Sun, 25 Dec 2022 02:04:10 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/dns-exfiltration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>XXE</title>
+      <link>https://SpawnZii.github.io/tags/xxe/</link>
+      <pubDate>Sun, 25 Dec 2022 02:04:10 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/xxe/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>bugs</title>
@@ -45,42 +99,6 @@
       <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
       
       <guid>https://SpawnZii.github.io/tags/spip/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ctf</title>
-      <link>https://SpawnZii.github.io/tags/ctf/</link>
-      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
-      
-      <guid>https://SpawnZii.github.io/tags/ctf/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SSTI</title>
-      <link>https://SpawnZii.github.io/tags/ssti/</link>
-      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
-      
-      <guid>https://SpawnZii.github.io/tags/ssti/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>web</title>
-      <link>https://SpawnZii.github.io/tags/web/</link>
-      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
-      
-      <guid>https://SpawnZii.github.io/tags/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>writeup</title>
-      <link>https://SpawnZii.github.io/tags/writeup/</link>
-      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
-      
-      <guid>https://SpawnZii.github.io/tags/writeup/</guid>
       <description></description>
     </item>
     

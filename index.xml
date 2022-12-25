@@ -13,6 +13,26 @@
     
     
     <item>
+      <title>[Avent ESNA] Web - 777 Cyber casino</title>
+      <link>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-777-cyber-casino/</link>
+      <pubDate>Sun, 25 Dec 2022 02:09:19 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-777-cyber-casino/</guid>
+      <description>Introduction Every year ESNA organizes a CTF as an advent calendar, so there is a new challenge every day on a different theme, like pwn, forensic, programming, reverse and web. To motivate students to participate, the TOP 8 of the general ranking will be selected to participate in the CTF of EC2. The challenges are proposed by Worty &amp;amp; iHuggsy, but also by other trusted students ;).
+I was lucky enough to be able to create a challenge for the occasion, so I will start with this one.</description>
+    </item>
+    
+    <item>
+      <title>[Avent ESNA] Web - Papa noël gère ses documents Introduction</title>
+      <link>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-papa-no%C3%ABl-g%C3%A8re-ses-documents-introduction/</link>
+      <pubDate>Sun, 25 Dec 2022 02:04:10 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-papa-no%C3%ABl-g%C3%A8re-ses-documents-introduction/</guid>
+      <description>Introduction Every year ESNA organizes a CTF as an advent calendar, so there is a new challenge every day on a different theme, like pwn, forensic, programming, reverse and web. To motivate students to participate, the TOP 8 of the general ranking will be selected to participate in the CTF of EC2. The challenges are proposed by Worty &amp;amp; iHuggsy, but also by other trusted students ;).
+I will try to explain you how I solved the web challenge.</description>
+    </item>
+    
+    <item>
       <title>How we have pwned Root-Me in 2022</title>
       <link>https://SpawnZii.github.io/posts/2022/07/how-we-have-pwned-root-me-in-2022/</link>
       <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
@@ -40,8 +60,8 @@ gobuster dir -u http://172.17.0.2:8181/ -w /usr/share/wordlists/dirbuster/direct
       <pubDate>Wed, 16 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://SpawnZii.github.io/about/</guid>
-      <description>I am currently in my first year of engineering school. I am passionate about offensive security, especially the security of web applications. I sometimes do CTF and Bug Bounty.
-School career  BAC STI2D SIN. DUT NETWORKs &amp;amp; TELECOMMUNICATIONS. ENGINEERING School on CYBER DEFENCE at ESNA (first year).   </description>
+      <description>I am currently in my second years of engineering school. I am passionate about offensive security, especially the security of web applications. I sometimes do CTF and Bug Bounty.
+School career  BAC STI2D SIN. DUT NETWORKs &amp;amp; TELECOMMUNICATIONS. ENGINEERING School on CYBER DEFENCE at ESNA.   </description>
     </item>
     
   </channel>

