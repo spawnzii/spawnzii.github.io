@@ -193,9 +193,9 @@ I was lucky enough to be able to create a challenge for the occasion, so I will 
 </ul>
 <h2 id="inspection-of-login-requests">Inspection of login requests.</h2>
 <p>The first thing we could notice on the login is the presence of a <code>url</code> parameter.</p>
-<p><img src="https://SpawnZii.github.io/posts/777/or.png" alt="form"></p>
-<p>Which makes us think of the exploitation of an open redirect and thus of a potential client vulnerability.
-Inspection of the account page.</p>
+<p><img src="https://SpawnZii.github.io/posts/777/opr.png" alt="form"></p>
+<p>Which makes us think of the exploitation of an open redirect and thus of a potential client vulnerability.</p>
+<h2 id="inspection-of-the-account-page">Inspection of the account page.</h2>
 <p>On the account.php page we find a file upload form and a verification id button.</p>
 <p><img src="https://SpawnZii.github.io/posts/777/account.png" alt="form"></p>
 <p>After some attempts on the file upload we realize that it is not vulnerable. It allows the user to upload his ID and retrieve it via a url.</p>
