@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>[ESNA x Worty] Web - Worty is my cheat sheet</title>
+      <link>https://SpawnZii.github.io/posts/2023/01/esna-x-worty-web-worty-is-my-cheat-sheet/</link>
+      <pubDate>Tue, 31 Jan 2023 04:17:18 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/posts/2023/01/esna-x-worty-web-worty-is-my-cheat-sheet/</guid>
+      <description>Introduction Après la seconde place de l&amp;rsquo;ESNA au CTF Hack The Box University, nous nous sommes retrouvés avec plusieurs vouchers VIP inutilisé. Pour ne pas faire de gaspillage, Worty et Raccon ont monté un petit ctf afin de faire gagner les vouchers.
+How to easily bypass htaccess. Pour cette première step on tombe sur une basic auth nous bloquant l&amp;rsquo;accès au site web. Après avoir essayé de bypass la basic auth pendant 1h j&amp;rsquo;ai checké le discord :</description>
+    </item>
+    
+    <item>
       <title>[Avent ESNA] Web - 777 Cyber casino</title>
       <link>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-777-cyber-casino/</link>
       <pubDate>Sun, 25 Dec 2022 02:09:19 +0100</pubDate>

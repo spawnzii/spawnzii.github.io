@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 25 Dec 2022 02:09:19 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 31 Jan 2023 04:17:18 +0100</lastBuildDate>
     
 	<atom:link href="https://SpawnZii.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,9 +15,36 @@
     <item>
       <title>ctf</title>
       <link>https://SpawnZii.github.io/tags/ctf/</link>
-      <pubDate>Sun, 25 Dec 2022 02:09:19 +0100</pubDate>
+      <pubDate>Tue, 31 Jan 2023 04:17:18 +0100</pubDate>
       
       <guid>https://SpawnZii.github.io/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rogueSQL</title>
+      <link>https://SpawnZii.github.io/tags/roguesql/</link>
+      <pubDate>Tue, 31 Jan 2023 04:17:18 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/roguesql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sudoedit</title>
+      <link>https://SpawnZii.github.io/tags/sudoedit/</link>
+      <pubDate>Tue, 31 Jan 2023 04:17:18 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/sudoedit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web</title>
+      <link>https://SpawnZii.github.io/tags/web/</link>
+      <pubDate>Tue, 31 Jan 2023 04:17:18 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/web/</guid>
       <description></description>
     </item>
     
@@ -72,33 +99,6 @@
       <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
       
       <guid>https://SpawnZii.github.io/tags/bugs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RCE</title>
-      <link>https://SpawnZii.github.io/tags/rce/</link>
-      <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
-      
-      <guid>https://SpawnZii.github.io/tags/rce/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>root-me</title>
-      <link>https://SpawnZii.github.io/tags/root-me/</link>
-      <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
-      
-      <guid>https://SpawnZii.github.io/tags/root-me/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>spip</title>
-      <link>https://SpawnZii.github.io/tags/spip/</link>
-      <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
-      
-      <guid>https://SpawnZii.github.io/tags/spip/</guid>
       <description></description>
     </item>
     

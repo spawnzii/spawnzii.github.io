@@ -3,12 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-777-cyber-casino/</loc>
-    <lastmod>2022-12-25T02:09:19+01:00</lastmod>
+    <loc>https://SpawnZii.github.io/posts/2023/01/esna-x-worty-web-worty-is-my-cheat-sheet/</loc>
+    <lastmod>2023-01-31T04:17:18+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://SpawnZii.github.io/tags/ctf/</loc>
+    <lastmod>2023-01-31T04:17:18+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/posts/</loc>
+    <lastmod>2023-01-31T04:17:18+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/tags/roguesql/</loc>
+    <lastmod>2023-01-31T04:17:18+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/tags/sudoedit/</loc>
+    <lastmod>2023-01-31T04:17:18+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/tags/</loc>
+    <lastmod>2023-01-31T04:17:18+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://SpawnZii.github.io/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://SpawnZii.github.io/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/tags/web/</loc>
+    <lastmod>2023-01-31T04:17:18+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://SpawnZii.github.io/posts/2022/12/avent-esna-web-777-cyber-casino/</loc>
     <lastmod>2022-12-25T02:09:19+01:00</lastmod>
   </url>
   
@@ -20,26 +60,6 @@
   <url>
     <loc>https://SpawnZii.github.io/tags/postmessage/</loc>
     <lastmod>2022-12-25T02:09:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/posts/</loc>
-    <lastmod>2022-12-25T02:09:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/tags/</loc>
-    <lastmod>2022-12-25T02:09:19+01:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://SpawnZii.github.io/fr/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://SpawnZii.github.io/tags/"
-                />
   </url>
   
   <url>
@@ -119,11 +139,6 @@
   
   <url>
     <loc>https://SpawnZii.github.io/tags/ssti/</loc>
-    <lastmod>2022-04-28T13:52:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://SpawnZii.github.io/tags/web/</loc>
     <lastmod>2022-04-28T13:52:15+02:00</lastmod>
   </url>
   

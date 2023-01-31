@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sudoedit on SpawnZii</title>
+    <link>https://SpawnZii.github.io/tags/sudoedit/</link>
+    <description>Recent content in sudoedit on SpawnZii</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Tue, 31 Jan 2023 04:17:18 +0100</lastBuildDate>
+    
+	<atom:link href="https://SpawnZii.github.io/tags/sudoedit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[ESNA x Worty] Web - Worty is my cheat sheet</title>
+      <link>https://SpawnZii.github.io/posts/2023/01/esna-x-worty-web-worty-is-my-cheat-sheet/</link>
+      <pubDate>Tue, 31 Jan 2023 04:17:18 +0100</pubDate>
+      
+      <guid>https://SpawnZii.github.io/posts/2023/01/esna-x-worty-web-worty-is-my-cheat-sheet/</guid>
+      <description>Introduction Après la seconde place de l&amp;rsquo;ESNA au CTF Hack The Box University, nous nous sommes retrouvés avec plusieurs vouchers VIP inutilisé. Pour ne pas faire de gaspillage, Worty et Raccon ont monté un petit ctf afin de faire gagner les vouchers.
+How to easily bypass htaccess. Pour cette première step on tombe sur une basic auth nous bloquant l&amp;rsquo;accès au site web. Après avoir essayé de bypass la basic auth pendant 1h j&amp;rsquo;ai checké le discord :</description>
+    </item>
+    
+  </channel>
+</rss>

