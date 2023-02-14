@@ -14,6 +14,8 @@ Environment Of course we did not our research directly on root me." />
 <link rel="canonical" href="https://SpawnZii.github.io/posts/2022/07/how-we-have-pwned-root-me-in-2022/" />
 
 
+
+
     <title>
         
             How we have pwned Root-Me in 2022 :: SpawnZii 
@@ -27,7 +29,7 @@ Environment Of course we did not our research directly on root me." />
 
 
 
-<link rel="stylesheet" href="https://SpawnZii.github.io/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+<link rel="stylesheet" href="/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
 
 
     
@@ -35,12 +37,12 @@ Environment Of course we did not our research directly on root me." />
     
 
 
-    <link rel="apple-touch-icon" sizes="180x180" href="https://SpawnZii.github.io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://SpawnZii.github.io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://SpawnZii.github.io/favicon-16x16.png">
-    <link rel="manifest" href="https://SpawnZii.github.io/site.webmanifest">
-    <link rel="mask-icon" href="https://SpawnZii.github.io/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="https://SpawnZii.github.io/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
     <meta name="msapplication-TileColor" content="">
 
 
@@ -95,6 +97,46 @@ Environment Of course we did not our research directly on root me." />
 
 
 
+
+   
+   <!-- Thanks for using github/divinerites/plausible-hugo v1.17.2. Please, consider leaving a star on Github if you like it. -->
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="preconnect" href="https://plausible.io">
+    
+        
+        <script defer  data-domain="plausible.spawnzii.fr" src="https://plausible.io/js/plausible.js" ></script>
+
+<!-- If you are using Content-Security-Policy, do not forget to add this code to your CSP : 
+  script-src 'unsafe-inline' https://plausible.io
+  connect-src 'unsafe-inline' https://plausible.io
+  or just add the partial 'plausible_csp.html' to those 2 csp directives in your 'index.headers' file
+-->
+
+
+
+    
+    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+    <script>
+         
+         
+         
+    </script>
+
+    
+
+
+
+
     </head>
 
     
@@ -104,7 +146,7 @@ Environment Of course we did not our research directly on root me." />
         <div class="container">
             <header class="header">
     <span class="header__inner">
-        <a href="https://SpawnZii.github.io/" style="text-decoration: none;">
+        <a href="/" style="text-decoration: none;">
     <div class="logo">
         
             <span class="logo__mark"> </span>
@@ -122,7 +164,7 @@ Environment Of course we did not our research directly on root me." />
         <span class="header__right">
             
                 <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://SpawnZii.github.io/about/">About</a></li><li><a href="https://SpawnZii.github.io/posts/">Posts</a></li>
+    <ul class="menu__inner"><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li>
         <div class="submenu">
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">en</a>
@@ -217,11 +259,11 @@ services:
 $GLOBALS['filtrer_javascript'] = -1;
 </code></pre><h2 id="-bug-1---a-simple-xss-to-start"># Bug 1 - A simple XSS to start</h2>
 <p>After some research I managed to identify a trivial stored  XSS. An author can add hyperlink with the following payload <code>javascript:alert(document.domain)</code>, So when the user clicks on the link, the javascript will be executed.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/pldsimplexss.png" alt="form"></p>
+<p><img src="/posts/rmrce/pldsimplexss.png" alt="form"></p>
 <p>It&rsquo;s possible to trigger the xss at several places, on the public part of the site.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/publictriggerxss.png" alt="form"></p>
+<p><img src="/posts/rmrce/publictriggerxss.png" alt="form"></p>
 <p>And on the administration interface.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/triggerxss.png" alt="form"></p>
+<p><img src="/posts/rmrce/triggerxss.png" alt="form"></p>
 <h3 id="xss-to-csrf-to-rce-">XSS to CSRF to RCE ?</h3>
 <p>Now that we can run javascript several scenarios are possible via.</p>
 <ul>
@@ -230,10 +272,10 @@ $GLOBALS['filtrer_javascript'] = -1;
 <li>Create a CSRF to upload a malicious plugin</li>
 </ul>
 <p>You guessed it, I chose the last option, for that we will look at a function of spip allowing an administrator to upload a plugin.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/manage.png" alt="form"></p>
+<p><img src="/posts/rmrce/manage.png" alt="form"></p>
 <p>This function allows an administrator to upload a plugin in zip format from a remote server, the plugin will be unzip and stored at <code>/plugins/auto/</code>.
 By analyzing the upload request, we notice that two tokens are passed as parameters, fortunately for us, they do not change between two requests</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/token.png" alt="form"></p>
+<p><img src="/posts/rmrce/token.png" alt="form"></p>
 <p>It&rsquo;s time to build our payload !</p>
 <h3 id="evil-plugin-setup">Evil plugin setup.</h3>
 <p>The function to download a plugin waits for a zip file, so we must create our plugins on our remote server.</p>
@@ -284,49 +326,49 @@ if (xhr.readyState == 4) {
 
 csrf_rce();
 </code></pre><p>We just have to encode our payload in base64 and paste it on the hyperlink.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/pldcsrf.png" alt="form"></p>
+<p><img src="/posts/rmrce/pldcsrf.png" alt="form"></p>
 <p>Now that our payload is ready, all we have to do is wait for an administrator to click on the link to download the plugin.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/o.gif#center" alt="form"></p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/apresclique.png" alt="form"></p>
+<p><img src="/posts/rmrce/o.gif#center" alt="form"></p>
+<p><img src="/posts/rmrce/apresclique.png" alt="form"></p>
 <p>We can go to our plugin to see the result.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/poc.png" alt="form"></p>
+<p><img src="/posts/rmrce/poc.png" alt="form"></p>
 <h2 id="-bug-2---on-est-bon-rien-a-faire-sounds-like-rce"># Bug 2 - &ldquo;On est bon, rien a faire&rdquo; sounds like RCE</h2>
 <p>After a few xss found, we wanted to think bigger and we gave ourselves the objective to find a RCE.</p>
 <p>A few days later Abyss watcher had the idea to watch the fix of an old vulnerability (cc <a href="https://twitter.com/TheLaluka">Laluka</a>).</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/patch.png" alt="form"></p>
+<p><img src="/posts/rmrce/patch.png" alt="form"></p>
 <h3 id="what-happens-in-the-patch-">What happens in the patch ?</h3>
 <p>Before the patch the <code>_oups</code> parameter was passed directly to the <code>$valeurs</code> array.
 Now <code>_oups</code> expects a serialized object encoded in base64.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/oupscommit.png" alt="form"></p>
+<p><img src="/posts/rmrce/oupscommit.png" alt="form"></p>
 <p>To debug more simply we have added a <code>print_r</code> of the variable <code>$valeurs</code>.
 This allows us to see the result of our payload directly on the page.</p>
 <h3 id="its-time-for-a-bypass">It&rsquo;s time for a bypass</h3>
 <p>Now what happens if we put a simple string like <strong>http://localhost/ecrire/?exec=article&amp;id_article=1&amp;_oups=notanobject</strong> on <code>_oups</code> parameter ?</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/nv.png" alt="form"></p>
+<p><img src="/posts/rmrce/nv.png" alt="form"></p>
 <p>Nothing, <code>_oups</code> is empty.</p>
 <p>But now try to inject serialized object, like : <code>TzoxOiJBIjoxOntzOjE6ImEiO3M6MzoiUG9DIjt9</code>.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/v.png" alt="form"></p>
+<p><img src="/posts/rmrce/v.png" alt="form"></p>
 <p>The string is reflected several times in the source code.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/inj.png" alt="form"></p>
+<p><img src="/posts/rmrce/inj.png" alt="form"></p>
 <p>We can try to inject with <strong><code>http://localhost/ecrire/?exec=article&amp;id_article=1&amp;_oups=TzoxOiJBIjoxOntzOjE6ImEiO3M6MzoiUG9DIjt9'&quot;&lt;h1&gt;inject here&lt;/h1&gt;</code></strong></p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/h1.png" alt="form"></p>
+<p><img src="/posts/rmrce/h1.png" alt="form"></p>
 <p>Damnnn, nice we have html/XSS injection.
 You know what that means ???</p>
 <p>Are you remember <a href="https://thinkloveshare.com/hacking/rce_on_spip_and_root_me/">the Laluka&rsquo;s RCE ?</a>
 And if we try to reproduce the same thing. <strong><code>http://localhost/ecrire/?exec=article&amp;id_article=1&amp;_oups=TzoxOiJBIjoxOntzOjE6ImEiO3M6MzoiUG9DIjt9'&quot;&lt;?php system('id');?&gt;</code></strong>.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/rcepoc.png" alt="form"></p>
+<p><img src="/posts/rmrce/rcepoc.png" alt="form"></p>
 <p>Here we go again &hellip;</p>
 <h2 id="small-explanations">Small explanations</h2>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/mm.jpg" alt="form"></p>
+<p><img src="/posts/rmrce/mm.jpg" alt="form"></p>
 <p>SPIP uses skeletons, a kind of html template that is used to formalise the rendering of a page. The problem here is that once the skeleton is filled in, it is passed to a function that evaluates the page (<a href="https://github.com/spip/SPIP/blob/master/ecrire/public/evaluer_page.php"><strong>evaluer_page.php</strong></a>).</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/eval.png" alt="form"></p>
+<p><img src="/posts/rmrce/eval.png" alt="form"></p>
 <p>So as we inject into the skeleton (<strong><a href="https://github.com/spip/SPIP/blob/master/prive/formulaires/editer_liens.html">editer_lien.html</a></strong>), once passed into the function <strong>evaluate_page.php</strong> the php is interpreted.</p>
 <h2 id="patch">Patch</h2>
 <p>This is how oops is managed after the patch.
 It is now base64 encoded and converted to json.
-<img src="https://SpawnZii.github.io/posts/rmrce/p1.png" alt="form"></p>
+<img src="/posts/rmrce/p1.png" alt="form"></p>
 <p>The whole thing will be passed to the html entities function</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/p2.png" alt="form"></p>
+<p><img src="/posts/rmrce/p2.png" alt="form"></p>
 <h2 id="timeline">Timeline</h2>
 <ul>
 <li>
@@ -350,7 +392,7 @@ It is now base64 encoded and converted to json.
 </ul>
 <h2 id="conclusion--thanks">Conclusion &amp; Thanks</h2>
 <p>It was a great experience to share our research with <a href="https://github.com/Abyss-W4tcher">Abyss Watcher</a>. We are happy to have contributed to the security of SPIP and Root-Me. Many thanks to <a href="https://twitter.com/TheLaluka">Laluka</a> and <a href="https://twitter.com/_worty">W0rty</a> for proofreading this article.</p>
-<p><img src="https://SpawnZii.github.io/posts/rmrce/sq.jpg" alt="form"></p>
+<p><img src="/posts/rmrce/sq.jpg" alt="form"></p>
 <h2 id="references">References</h2>
 <ul>
 <li>
@@ -568,7 +610,7 @@ It is now base64 encoded and converted to json.
 
 
 
-<script type="text/javascript" src="https://SpawnZii.github.io/bundle.min.ace63d93098bf623f7c286a9084a4c22bfc482944c734f87fe0b685c7c6c7fa0ad2edb028c3b4b60d3343720c8ab490b320ad7f8edf4f6e9a6b898fc529057a9.js" integrity="sha512-rOY9kwmL9iP3woapCEpMIr/EgpRMc0&#43;H/gtoXHxsf6CtLtsCjDtLYNM0NyDIq0kLMgrX&#43;O309ummuJj8UpBXqQ=="></script>
+<script type="text/javascript" src="/bundle.min.ace63d93098bf623f7c286a9084a4c22bfc482944c734f87fe0b685c7c6c7fa0ad2edb028c3b4b60d3343720c8ab490b320ad7f8edf4f6e9a6b898fc529057a9.js" integrity="sha512-rOY9kwmL9iP3woapCEpMIr/EgpRMc0&#43;H/gtoXHxsf6CtLtsCjDtLYNM0NyDIq0kLMgrX&#43;O309ummuJj8UpBXqQ=="></script>
 
 
 

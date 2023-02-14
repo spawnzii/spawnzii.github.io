@@ -13,6 +13,8 @@ I was lucky enough to be able to create a challenge for the occasion, so I will 
 <link rel="canonical" href="https://SpawnZii.github.io/posts/2022/12/avent-esna-web-777-cyber-casino/" />
 
 
+
+
     <title>
         
             [Avent ESNA] Web - 777 Cyber casino :: SpawnZii 
@@ -26,7 +28,7 @@ I was lucky enough to be able to create a challenge for the occasion, so I will 
 
 
 
-<link rel="stylesheet" href="https://SpawnZii.github.io/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+<link rel="stylesheet" href="/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
 
 
     
@@ -34,12 +36,12 @@ I was lucky enough to be able to create a challenge for the occasion, so I will 
     
 
 
-    <link rel="apple-touch-icon" sizes="180x180" href="https://SpawnZii.github.io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://SpawnZii.github.io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://SpawnZii.github.io/favicon-16x16.png">
-    <link rel="manifest" href="https://SpawnZii.github.io/site.webmanifest">
-    <link rel="mask-icon" href="https://SpawnZii.github.io/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="https://SpawnZii.github.io/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
     <meta name="msapplication-TileColor" content="">
 
 
@@ -89,6 +91,46 @@ I was lucky enough to be able to create a challenge for the occasion, so I will 
 
 
 
+
+   
+   <!-- Thanks for using github/divinerites/plausible-hugo v1.17.2. Please, consider leaving a star on Github if you like it. -->
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="preconnect" href="https://plausible.io">
+    
+        
+        <script defer  data-domain="plausible.spawnzii.fr" src="https://plausible.io/js/plausible.js" ></script>
+
+<!-- If you are using Content-Security-Policy, do not forget to add this code to your CSP : 
+  script-src 'unsafe-inline' https://plausible.io
+  connect-src 'unsafe-inline' https://plausible.io
+  or just add the partial 'plausible_csp.html' to those 2 csp directives in your 'index.headers' file
+-->
+
+
+
+    
+    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+    <script>
+         
+         
+         
+    </script>
+
+    
+
+
+
+
     </head>
 
     
@@ -98,7 +140,7 @@ I was lucky enough to be able to create a challenge for the occasion, so I will 
         <div class="container">
             <header class="header">
     <span class="header__inner">
-        <a href="https://SpawnZii.github.io/" style="text-decoration: none;">
+        <a href="/" style="text-decoration: none;">
     <div class="logo">
         
             <span class="logo__mark"> </span>
@@ -116,7 +158,7 @@ I was lucky enough to be able to create a challenge for the occasion, so I will 
         <span class="header__right">
             
                 <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://SpawnZii.github.io/about/">About</a></li><li><a href="https://SpawnZii.github.io/posts/">Posts</a></li>
+    <ul class="menu__inner"><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li>
         <div class="submenu">
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">en</a>
@@ -173,7 +215,7 @@ I was lucky enough to be able to create a challenge for the occasion, so I will 
         <hr>
 <h2 id="introduction">Introduction</h2>
 <p>Every year ESNA organizes a CTF as an advent calendar, so there is a new challenge every day on a different theme, like pwn, forensic, programming, reverse and web. To motivate students to participate, the TOP 8 of the general ranking will be selected to participate in the CTF of EC2. The challenges are proposed by Worty &amp; iHuggsy, but also by other trusted students ;).</p>
-<p><img src="https://SpawnZii.github.io/posts/777/home.png" alt="form"></p>
+<p><img src="/posts/777/home.png" alt="form"></p>
 <p>I was lucky enough to be able to create a challenge for the occasion, so I will start with this one.</p>
 <hr>
 <h2 id="web-1--777-cyber-casino">Web-1 : 777 Cyber Casino</h2>
@@ -184,7 +226,7 @@ I was lucky enough to be able to create a challenge for the occasion, so I will 
 <li><strong>Author</strong> : SpawnZii</li>
 </ul>
 <hr>
-<p><img src="https://SpawnZii.github.io/posts/777/homecas.png" alt="form"></p>
+<p><img src="/posts/777/homecas.png" alt="form"></p>
 <p>The site represents an online casino, there are several features:</p>
 <ul>
 <li>A login/register page.</li>
@@ -193,17 +235,17 @@ I was lucky enough to be able to create a challenge for the occasion, so I will 
 </ul>
 <h2 id="inspection-of-login-requests">Inspection of login requests.</h2>
 <p>The first thing we could notice on the login is the presence of a <code>url</code> parameter.</p>
-<p><img src="https://SpawnZii.github.io/posts/777/opr.png" alt="form"></p>
+<p><img src="/posts/777/opr.png" alt="form"></p>
 <p>Which makes us think of the exploitation of an open redirect and thus of a potential client vulnerability.</p>
 <h2 id="inspection-of-the-account-page">Inspection of the account page.</h2>
 <p>On the account.php page we find a file upload form and a verification id button.</p>
-<p><img src="https://SpawnZii.github.io/posts/777/account.png" alt="form"></p>
+<p><img src="/posts/777/account.png" alt="form"></p>
 <p>After some attempts on the file upload we realize that it is not vulnerable. It allows the user to upload his ID and retrieve it via a url.</p>
 <h2 id="inspection-of-verification-request">Inspection of verification request.</h2>
 <p>This function takes as parameter the url of the file uploaded by the user.</p>
-<p><img src="https://SpawnZii.github.io/posts/777/verif.png" alt="form"></p>
+<p><img src="/posts/777/verif.png" alt="form"></p>
 <p>When trying to modify the url sent, like this <code>document_url=https://spawnzii.fr/?ping</code> we realize that the backend filters the url and we see an error message.</p>
-<p><img src="https://SpawnZii.github.io/posts/777/error.png" alt="form"></p>
+<p><img src="/posts/777/error.png" alt="form"></p>
 <p>We will try to play with the parser to send a different url. There were several possibilities.</p>
 <ul>
 <li>Use the open redirect found before.</li>
@@ -211,15 +253,15 @@ I was lucky enough to be able to create a challenge for the occasion, so I will 
 <li>Create a subdomain like this : <code>ů.cc.spawnzii.fr</code>.</li>
 </ul>
 <p>Here I will choose to use the open redirect, we must first bypass the parser on the url parameter. After some attempts we quickly understand that the backend only verifies that the domain name is present in the url. We can therefore use <code>https://xn--3ga.cc/login.php?url=https://www.google.com/?xn--3ga.cc</code> as a payload.</p>
-<p><img src="https://SpawnZii.github.io/posts/777/bypass.png" alt="form"></p>
+<p><img src="/posts/777/bypass.png" alt="form"></p>
 <p>We can try to send the following request to learn more about the process.</p>
-<p><img src="https://SpawnZii.github.io/posts/777/bot.png" alt="form"></p>
+<p><img src="/posts/777/bot.png" alt="form"></p>
 <p>One minute later we receive our ping on our netcat.</p>
-<p><img src="https://SpawnZii.github.io/posts/777/pong.png" alt="form"></p>
+<p><img src="/posts/777/pong.png" alt="form"></p>
 <p>We can now validate that we need to exploit a client attack.</p>
 <h2 id="find-the-xss">Find the XSS.</h2>
 <p>By inspecting the source code of the roulette we find a button calling two javascript functions.</p>
-<p><img src="https://SpawnZii.github.io/posts/777/btn.png" alt="form"></p>
+<p><img src="/posts/777/btn.png" alt="form"></p>
 <h2 id="play-function">Play() function.</h2>
 <p>This function will create an iframe from the following url <code>https://ů.cc/table2.php</code> if the iframe is not already present.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">play</span>(){
@@ -283,9 +325,9 @@ document.<span style="color:#a6e22e">location</span><span style="color:#f92672">
 </code></pre></div><ul>
 <li>We can send the payload to the bot.</li>
 </ul>
-<p><img src="https://SpawnZii.github.io/posts/777/final.png" alt="form"></p>
+<p><img src="/posts/777/final.png" alt="form"></p>
 <p>And we got the flag :)</p>
-<p><img src="https://SpawnZii.github.io/posts/777/flag.png" alt="form"></p>
+<p><img src="/posts/777/flag.png" alt="form"></p>
 
       </div>
     </article>
@@ -484,7 +526,7 @@ document.<span style="color:#a6e22e">location</span><span style="color:#f92672">
 
 
 
-<script type="text/javascript" src="https://SpawnZii.github.io/bundle.min.ace63d93098bf623f7c286a9084a4c22bfc482944c734f87fe0b685c7c6c7fa0ad2edb028c3b4b60d3343720c8ab490b320ad7f8edf4f6e9a6b898fc529057a9.js" integrity="sha512-rOY9kwmL9iP3woapCEpMIr/EgpRMc0&#43;H/gtoXHxsf6CtLtsCjDtLYNM0NyDIq0kLMgrX&#43;O309ummuJj8UpBXqQ=="></script>
+<script type="text/javascript" src="/bundle.min.ace63d93098bf623f7c286a9084a4c22bfc482944c734f87fe0b685c7c6c7fa0ad2edb028c3b4b60d3343720c8ab490b320ad7f8edf4f6e9a6b898fc529057a9.js" integrity="sha512-rOY9kwmL9iP3woapCEpMIr/EgpRMc0&#43;H/gtoXHxsf6CtLtsCjDtLYNM0NyDIq0kLMgrX&#43;O309ummuJj8UpBXqQ=="></script>
 
 
 

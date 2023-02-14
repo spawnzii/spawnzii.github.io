@@ -102,5 +102,50 @@
       <description></description>
     </item>
     
+    <item>
+      <title>RCE</title>
+      <link>https://SpawnZii.github.io/tags/rce/</link>
+      <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/rce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>root-me</title>
+      <link>https://SpawnZii.github.io/tags/root-me/</link>
+      <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/root-me/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spip</title>
+      <link>https://SpawnZii.github.io/tags/spip/</link>
+      <pubDate>Tue, 12 Jul 2022 13:02:46 +0200</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/spip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SSTI</title>
+      <link>https://SpawnZii.github.io/tags/ssti/</link>
+      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/ssti/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>writeup</title>
+      <link>https://SpawnZii.github.io/tags/writeup/</link>
+      <pubDate>Thu, 28 Apr 2022 13:52:15 +0200</pubDate>
+      
+      <guid>https://SpawnZii.github.io/tags/writeup/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

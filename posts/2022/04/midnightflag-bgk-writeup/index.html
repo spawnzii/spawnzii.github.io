@@ -14,6 +14,8 @@ gobuster dir -u http://172.17.0.2:8181/ -w /usr/share/wordlists/dirbuster/direct
 <link rel="canonical" href="https://SpawnZii.github.io/posts/2022/04/midnightflag-bgk-writeup/" />
 
 
+
+
     <title>
         
             [Midnightflag] BGK Writeup :: SpawnZii 
@@ -27,7 +29,7 @@ gobuster dir -u http://172.17.0.2:8181/ -w /usr/share/wordlists/dirbuster/direct
 
 
 
-<link rel="stylesheet" href="https://SpawnZii.github.io/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+<link rel="stylesheet" href="/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
 
 
     
@@ -35,12 +37,12 @@ gobuster dir -u http://172.17.0.2:8181/ -w /usr/share/wordlists/dirbuster/direct
     
 
 
-    <link rel="apple-touch-icon" sizes="180x180" href="https://SpawnZii.github.io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://SpawnZii.github.io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://SpawnZii.github.io/favicon-16x16.png">
-    <link rel="manifest" href="https://SpawnZii.github.io/site.webmanifest">
-    <link rel="mask-icon" href="https://SpawnZii.github.io/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="https://SpawnZii.github.io/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
     <meta name="msapplication-TileColor" content="">
 
 
@@ -95,6 +97,46 @@ gobuster dir -u http://172.17.0.2:8181/ -w /usr/share/wordlists/dirbuster/direct
 
 
 
+
+   
+   <!-- Thanks for using github/divinerites/plausible-hugo v1.17.2. Please, consider leaving a star on Github if you like it. -->
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="preconnect" href="https://plausible.io">
+    
+        
+        <script defer  data-domain="plausible.spawnzii.fr" src="https://plausible.io/js/plausible.js" ></script>
+
+<!-- If you are using Content-Security-Policy, do not forget to add this code to your CSP : 
+  script-src 'unsafe-inline' https://plausible.io
+  connect-src 'unsafe-inline' https://plausible.io
+  or just add the partial 'plausible_csp.html' to those 2 csp directives in your 'index.headers' file
+-->
+
+
+
+    
+    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+    <script>
+         
+         
+         
+    </script>
+
+    
+
+
+
+
     </head>
 
     
@@ -104,7 +146,7 @@ gobuster dir -u http://172.17.0.2:8181/ -w /usr/share/wordlists/dirbuster/direct
         <div class="container">
             <header class="header">
     <span class="header__inner">
-        <a href="https://SpawnZii.github.io/" style="text-decoration: none;">
+        <a href="/" style="text-decoration: none;">
     <div class="logo">
         
             <span class="logo__mark"> </span>
@@ -122,7 +164,7 @@ gobuster dir -u http://172.17.0.2:8181/ -w /usr/share/wordlists/dirbuster/direct
         <span class="header__right">
             
                 <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://SpawnZii.github.io/about/">About</a></li><li><a href="https://SpawnZii.github.io/posts/">Posts</a></li>
+    <ul class="menu__inner"><li><a href="/about/">About</a></li><li><a href="/posts/">Posts</a></li>
         <div class="submenu">
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">en</a>
@@ -180,7 +222,7 @@ gobuster dir -u http://172.17.0.2:8181/ -w /usr/share/wordlists/dirbuster/direct
 <p>Writeup d&rsquo;un challenge que j&rsquo;ai proposé pour le Midnightflag ctf.
 L&rsquo;objectif est d&rsquo;obtenir le flag situé dans le fichier /root/flag.txt du serveur.
 Pour ce faire les joueurs devront exploiter une webapp flask.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/home.png" alt="form"></p>
+<p><img src="/posts/bgk/home.png" alt="form"></p>
 <h2 id="step-1--exploitation-dun-cookie-flask">Step 1 : Exploitation d&rsquo;un cookie flask</h2>
 <p>On lance une énumération classique des dossiers sur le serveur web.</p>
 <pre><code>gobuster dir -u http://172.17.0.2:8181/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt               
@@ -204,23 +246,23 @@ by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
 /scan                 (Status: 200) [Size: 40]
 </code></pre><p>On remarque aussi que <strong>/scan</strong> existe, elle est pour le moment inaccessible.
 Une page d&rsquo;inscription est disponible, on peut alors essayer de s&rsquo;inscrire.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/register.png" alt="form"></p>
+<p><img src="/posts/bgk/register.png" alt="form"></p>
 <p>Une fois authentifié sur le site on essaye de se rendre sur la page de scan, toujours inaccessible.
 On remarque alors que notre cookie de session est un cookie flask.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/console.png" alt="form"></p>
+<p><img src="/posts/bgk/console.png" alt="form"></p>
 <p>On peut alors essayer de decoder le cookie avec <strong>flask-unsign</strong>.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/flask-decode.png" alt="form"></p>
+<p><img src="/posts/bgk/flask-decode.png" alt="form"></p>
 <p>Essayons maintenant de bruteforcer la clé permettant de signer le cookie.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/secret.png" alt="form"></p>
+<p><img src="/posts/bgk/secret.png" alt="form"></p>
 <p>Bingo ! on obtient la secret key : <strong>coldwar</strong>.</p>
 <p>On peut maintenant modifier le champ user_id de notre cookie pour lui attribuer la valeur <strong>1</strong>.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/cookiesign.png" alt="form"></p>
+<p><img src="/posts/bgk/cookiesign.png" alt="form"></p>
 <p>Nous pouvons maintenant utiliser le cookie pour obtenir une session <strong>admin</strong> et accéder à la page /scan.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/admin.png" alt="form"></p>
+<p><img src="/posts/bgk/admin.png" alt="form"></p>
 <h2 id="step-2--exploitation-dune-server-side-template-injection">Step 2 : Exploitation d&rsquo;une Server Side Template Injection</h2>
 <p>Sur la page de scan nous trouvons une input demandant une url.
 On lance notre serveur web et on rentre notre url.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/scan.png" alt="form"></p>
+<p><img src="/posts/bgk/scan.png" alt="form"></p>
 <p>Le web serveur fait plusieurs requêtes sur notre serveur.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">spawnzii@spz:/var/www/html$ python3 -m http.server 9090
 Serving HTTP on 0.0.0.0 port 9090 (http://0.0.0.0:9090/) ...
@@ -233,24 +275,24 @@ Serving HTTP on 0.0.0.0 port 9090 (http://0.0.0.0:9090/) ...
 127.0.0.1 - - [28/Apr/2022 15:15:35] &#34;GET / HTTP/1.1&#34; 200 -
 
 </code></pre></div><p>Nous avons certaines informations en retour, comme le titre, le robots.txt,les fichiers js &hellip;</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/reponse.png" alt="form"></p>
+<p><img src="/posts/bgk/reponse.png" alt="form"></p>
 <p>On peut essayer de modifier le titre de notre serveur web en plaçant par exemple <strong>{{7*7}}</strong>.
-<img src="https://SpawnZii.github.io/posts/bgk/testssti.png" alt="form"></p>
+<img src="/posts/bgk/testssti.png" alt="form"></p>
 <p>Le titre est filtré, nous obtenons <strong>{7*7}</strong>.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/filter1.png" alt="form"></p>
+<p><img src="/posts/bgk/filter1.png" alt="form"></p>
 <p>Il est possible de bypass le filtre avec <strong>{{{7*7}}}</strong>
-<img src="https://SpawnZii.github.io/posts/bgk/49.png" alt="form"></p>
+<img src="/posts/bgk/49.png" alt="form"></p>
 <p>On essaye la fameuse payload : <code>{{self.__init__.__globals__.__builtins__.__import__('os').popen('id').read()}}</code></p>
 <p>Ehhh bah non.
-<img src="https://SpawnZii.github.io/posts/bgk/mm.png" alt="form"></p>
+<img src="/posts/bgk/mm.png" alt="form"></p>
 <p>Il reste donc encore quelques filtres à bypass.
 Pour trouver quels caractères sont filtrés on passe **{{import os global[]'.()&quot;_ }}** en titre.</p>
 <p>On obtient <code>заглавие : {import os global'()&quot; }</code>. Les
 caratères <strong>[]._</strong> sont donc ﬁltrés</p>
 <p>Notre payload final :</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/PLD.png" alt="form"></p>
+<p><img src="/posts/bgk/PLD.png" alt="form"></p>
 <p>On a bien notre reverse shell.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/shell.png" alt="form"></p>
+<p><img src="/posts/bgk/shell.png" alt="form"></p>
 <h2 id="step-2--crontab--notify-for-the-win">Step 2 : Crontab &amp; notify for the win</h2>
 <p>Après énumération du serveur on remarque :</p>
 <ul>
@@ -259,14 +301,14 @@ caratères <strong>[]._</strong> sont donc ﬁltrés</p>
 </ul>
 <p>Ne pouvant pas accéder au crontab il nous faut trouver un moyen de voir ce qu&rsquo;il se passe sur la machine.
 Nous pouvons utiliser <strong><a href="https://github.com/DominicBreuker/pspy">pspy</a></strong> pour voir les processus en cours d&rsquo;executions.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/cron.png" alt="form"></p>
+<p><img src="/posts/bgk/cron.png" alt="form"></p>
 <p>Voilà on recupère le crontab :).
 On comprend que le flag est pipe vers notify.</p>
 <p>Après quelques recherches on trouve le repo <strong><a href="https://github.com/projectdiscovery/notify">github</a></strong> de notify. Ce tool permet de transmettre le résultat d&rsquo;une commande sur différentes plateformes tel que discord, telegram &hellip;</p>
 <p>Il ne nous reste plus qu'à configurer notre provider-config.yaml avec notre webhook discord, situé dans <strong>/root/.config/notify</strong>.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/provider.png" alt="form"></p>
+<p><img src="/posts/bgk/provider.png" alt="form"></p>
 <p>On attend que le crontab soit exécuté.</p>
-<p><img src="https://SpawnZii.github.io/posts/bgk/flag.png" alt="form"></p>
+<p><img src="/posts/bgk/flag.png" alt="form"></p>
 
       </div>
     </article>
@@ -465,7 +507,7 @@ On comprend que le flag est pipe vers notify.</p>
 
 
 
-<script type="text/javascript" src="https://SpawnZii.github.io/bundle.min.ace63d93098bf623f7c286a9084a4c22bfc482944c734f87fe0b685c7c6c7fa0ad2edb028c3b4b60d3343720c8ab490b320ad7f8edf4f6e9a6b898fc529057a9.js" integrity="sha512-rOY9kwmL9iP3woapCEpMIr/EgpRMc0&#43;H/gtoXHxsf6CtLtsCjDtLYNM0NyDIq0kLMgrX&#43;O309ummuJj8UpBXqQ=="></script>
+<script type="text/javascript" src="/bundle.min.ace63d93098bf623f7c286a9084a4c22bfc482944c734f87fe0b685c7c6c7fa0ad2edb028c3b4b60d3343720c8ab490b320ad7f8edf4f6e9a6b898fc529057a9.js" integrity="sha512-rOY9kwmL9iP3woapCEpMIr/EgpRMc0&#43;H/gtoXHxsf6CtLtsCjDtLYNM0NyDIq0kLMgrX&#43;O309ummuJj8UpBXqQ=="></script>
 
 
 
